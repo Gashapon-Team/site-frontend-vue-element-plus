@@ -5,14 +5,17 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+      <img alt="Element+ logo" class="logo" src="@/assets/element_logo.png" width="125" height="125" />
+      <HelloWorld msg="Vue 3 & Element+ DEMO" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/tabs">Tabs</RouterLink>
+        <!-- <RouterLink to="/about">About</RouterLink> -->
+        <RouterLink to="/element-plus-demo">Element+ Demo</RouterLink>
+        <RouterLink to="/element-plus-demo-form">Element+ Demo Form</RouterLink>
       </nav>
     </div>
   </header>
