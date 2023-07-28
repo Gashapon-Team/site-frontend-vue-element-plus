@@ -5,7 +5,7 @@
         <el-icon><QuestionFilled /></el-icon>
         <div class="border-r"></div>
         <el-menu
-            :default-active="1"
+            :default-active="'1'"
             mode="horizontal"
             :ellipsis="false"
         >   
