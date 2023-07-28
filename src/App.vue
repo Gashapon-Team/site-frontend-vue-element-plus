@@ -1,88 +1,49 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-      <img alt="Element+ logo" class="logo" src="@/assets/element_logo.png" width="125" height="125" />
-      <HelloWorld msg="Vue 3 & Element+ DEMO" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/tabs">Tabs</RouterLink>
-        <!-- <RouterLink to="/about">About</RouterLink> -->
-        <RouterLink to="/element-plus-demo">Element+ Demo</RouterLink>
-        <RouterLink to="/element-plus-demo-form">Element+ Demo Form</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <el-container>
+    <el-aside>
+      <left-menu></left-menu>
+    </el-aside>
+    <el-container>
+      <el-header>
+        <topHead></topHead>
+      </el-header>
+      <el-main>
+        <component :is="nowPage"></component>
+      </el-main>
+    </el-container>
+  </el-container>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script setup>
+import {ref,shallowRef} from 'vue';
+import leftMenu from './components/layout/menu.vue'
+import topHead from './components/layout/header.vue';
+
+import KYC from './components/member/KYC.vue';
+
+let nowPage = shallowRef(KYC);
+
+
+//變更右側功能component
+const changePage = (pageName) => {
+  nowPage.value = markRaw(pageName)
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+</script>
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+<style>
+  *{
+    margin:0px;
+    padding:0px;
+  }
+   
+  .el-header{
+    padding:0px !important;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  .el-main{
+    background-color:#eeeeee;
+    min-height: calc(100vh - 60px);
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
 </style>
