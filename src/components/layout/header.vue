@@ -1,19 +1,20 @@
 <template>
-    <div class="top_header">
+    <div class="top_header" style="padding-right: 30px;">
         <div>{{timer}} 秒自動登出</div>
         <el-icon><Bell /></el-icon>
         <el-icon><QuestionFilled /></el-icon>
         <div class="border-r"></div>
-        <el-menu
-            :default-active="'1'"
-            mode="horizontal"
-            :ellipsis="false"
-        >   
-            <el-sub-menu index="2-1">
-                <template #title>小查理企業</template>
-                <el-menu-item index="2-2">登出</el-menu-item>
-            </el-sub-menu>
-        </el-menu>
+            <el-menu
+                class="mr-30"
+                :default-active="'1'"
+                mode="horizontal"
+                :ellipsis="false"
+            >   
+                <el-sub-menu index="2-1">
+                    <template #title>小查理企業</template>
+                    <el-menu-item index="2-2">登出</el-menu-item>
+                </el-sub-menu>
+            </el-menu>
     </div>
 </template>
   
@@ -32,9 +33,6 @@ const timerCount = setInterval(() => {
 </script>
 
 <style scoped lang="scss">
-    $blue:#07229a;
-    $text:#606266;
-
     .top_header{
         position:fixed;
         display:flex;
@@ -58,8 +56,12 @@ const timerCount = setInterval(() => {
         border-right:2px solid #ebebeb;;
     }
 
+    .mr-30{
+        margin-right:30px;
+    }
+
     :deep(.el-menu--horizontal>.el-sub-menu .el-sub-menu__title){
-        color:$blue !important;
+        color:$blue;
         font-size:18px;
         font-weight: 700;
         border-bottom: 0px solid transparent;

@@ -1,26 +1,28 @@
 <template>
-    <div class="left_menu p-3">
+    <div class="left_menu">
         <!--logo-->
         <div class="logo">
             <h1>NewebPay藍新金流</h1>
             <h3>會員平台管理</h3>
         </div>
-        <el-menu 
-            default-active="0-0"
-            background-color="Transparent"   
-            text-color="#fff"
-            unique-opened
-        >
-            <el-sub-menu :index="`${idx1}`" v-for="(menu,idx1) in menus">
-                <template #title>
-                    <el-icon><component :is="menu.icon" /></el-icon>
-                    <h3>{{menu.mainTitle}}</h3>
-                </template>
-                <el-menu-item v-for="(submenu,idx2) in menu.item" :index="`${idx1}-${idx2}`">
-                    <h4>{{submenu.title}}</h4>
-                </el-menu-item>
-            </el-sub-menu>
-      </el-menu>
+        <el-scrollbar height="80vh" always wrap-class="scrollbar">
+            <el-menu 
+                default-active="0-0"
+                background-color="Transparent"   
+                text-color="#fff"
+                unique-opened
+            >
+                <el-sub-menu :index="`${idx1}`" v-for="(menu,idx1) in menus">
+                    <template #title>
+                        <el-icon><component :is="menu.icon" /></el-icon>
+                        <h3>{{menu.mainTitle}}</h3>
+                    </template>
+                    <el-menu-item v-for="(submenu,idx2) in menu.item" :index="`${idx1}-${idx2}`">
+                        <h4>{{submenu.title}}</h4>
+                    </el-menu-item>
+                </el-sub-menu>
+            </el-menu>
+        </el-scrollbar>
     </div>
 </template>
   
@@ -95,10 +97,12 @@ const menus = reactive([
     position: fixed;
     min-height:100vh;
     background-image: linear-gradient(to top right, #07229a, #0064ff);
-    padding:30px;
+    padding:15px 10px;
     color:#FFFFFF;
+    z-index: 999;
 
     .logo{
+        padding:0px 10px;
         h1{
             font-size:28px;
             margin-bottom:30px;
@@ -111,6 +115,7 @@ const menus = reactive([
 
     .el-menu{
         border-width:0px;
+
     }
 
     :deep(.el-icon.el-sub-menu__icon-arrow svg){
@@ -122,6 +127,10 @@ const menus = reactive([
         background-color: rgba(255,255,255,0.3);
         border-radius: 5px;
         color: #FFFFFF;
+    }
+
+    .scrollbar{
+        color:white;
     }
     
 }

@@ -1,17 +1,21 @@
 <template>
-   <el-container>
-        <el-card class="box-card">
-            <template #header class="header--no--underline">
-                <div class="card-header">
-                    <span>實名認證 (KYC)</span>
+    <el-card class="box-card">
+        <el-row :gutter="24">
+            <el-col :span="20" :offset="1">
+                <div>
+                    <h2>實名認證 (KYC)</h2>
+                    <h4 class="mt-10 text-gray">依據《第三方支付服務業防制洗錢及打擊資恐辦法》規定，藍新有義進行客戶身分調查......完成實名認證，請放心資料僅用於......</h4>
                 </div>
-            </template>
-        </el-card>
-   </el-container>
+            </el-col>
+            <el-col :span="3" class="text-right">
+                <el-button size="large" type="primary">前往認證</el-button>
+            </el-col>
+        </el-row>
+    </el-card>
 </template>
   
 <script setup>
-import {ref} from 'vue';
+import { defineProps, ref } from 'vue';
 
 
 
@@ -19,22 +23,5 @@ import {ref} from 'vue';
 </script>
 
 <style scoped lang="scss">
-    .el-container{
-        padding:25px;
-    }
-
-    .box-card{
-        width:100%;
-    }
-
-    :deep(.header--no--underline){
-        border-bottom-width:0px;
-    }
-
-    .card-header{
-        font-weight: 800;
-        font-size:18px;
-    }
-
 </style>
-  
+   

@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside>
+    <el-aside width="278px">
       <left-menu></left-menu>
     </el-aside>
     <el-container>
@@ -8,7 +8,7 @@
         <topHead></topHead>
       </el-header>
       <el-main>
-        <component :is="nowPage"></component>
+        <component :is="pageName"></component>
       </el-main>
     </el-container>
   </el-container>
@@ -19,23 +19,29 @@ import {ref,shallowRef} from 'vue';
 import leftMenu from './components/layout/menu.vue'
 import topHead from './components/layout/header.vue';
 
-import KYC from './components/member/KYC.vue';
+// import storeManage from './components/member/storeManage.vue';
+import kyc from './components/member/kyc.vue';
 
-let nowPage = shallowRef(KYC);
+let pageName = shallowRef(kyc);
 
 
 //變更右側功能component
 const changePage = (pageName) => {
-  nowPage.value = markRaw(pageName)
+  pageName.value = markRaw(pageName)
 }
 
 
 </script>
 
-<style>
+<style lang="scss">
+
   *{
     margin:0px;
     padding:0px;
+  }
+
+  #app{
+    min-width: 1200px;
   }
    
   .el-header{

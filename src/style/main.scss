@@ -1,0 +1,48 @@
+
+$text:#606266;
+$blue:#07229a;
+
+.el-tabs__item{
+    font-weight:500 !important;
+    font-size:18px !important;
+
+    &:hover{
+        color:$blue;
+    }
+
+    &.is-active{
+        color:$blue;
+    }
+}
+
+.el-tabs__active-bar{
+    color:$blue;
+}
+
+.mt-10{
+    margin-top:10px;
+}
+
+
+//text color
+.text-gray{
+    color:#606266;
+}
+
+
+
+//scrollbar
+:deep(.el-scrollbar__bar.is-vertical>div){
+    width:8px;
+}
+
+:deep(.el-scrollbar__thumb){
+    background:#FFFFFF;
+    opacity: 1;
+
+    &:hover{
+        background:#FFFFFF;
+        opacity: 1;
+    }
+    
+}
