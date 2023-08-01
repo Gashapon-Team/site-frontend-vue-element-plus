@@ -31,7 +31,7 @@ import MainMenu from '../components/layout/main-menu.vue';
 import MainHeader from '../components/layout/main-header.vue';
 import MainFooter from '../components/layout/main-footer.vue';
 
-// import KYC from '../components/member/KYC.vue';
+import KYC from '../components/member/kyc.vue';
 
 let contentPage = shallowRef(KYC);
 
