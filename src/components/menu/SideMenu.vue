@@ -5,14 +5,14 @@
     <h2 class="title m-2">NwebPay 藍新金流</h2>
     <h4 class="subtitle m-2">會員平台管理</h4>
 
-    <el-sub-menu v-for="(sidemenu, i) in sidemenus" :key="i" :index="i" :title="sidemenu.title">
+    <el-sub-menu v-for="(sidemenu, i) in sidemenus" :key="i" :index="i" :title="sidemenu.title" :disabled="!hasSubMenu(sidemenu.subItem)">
       <template #title>
-        <component v-if="sidemenu.icon" style="widh:20px" :is="sidemenu.icon"></component>
+        <component v-if="sidemenu.icon"  style="widh:20px" :is="sidemenu.icon"></component>
         <span>{{sidemenu.title}}</span>
       </template>
-      <el-sub-menu v-for="(item, sub_index) in sidemenu.subItem" :key="sub_index" :index="sub_index">
+      <el-sub-menu v-for="(item, sub_index) in sidemenu.subItem"  :key="sub_index" :index="sub_index" :disabled="!hasSubMenu(item.subItem)">
         <template #title>
-          <span>{{item.title}}</span>
+          <span @click="changePageTo(sidemenu.path)">{{item.title}}</span>
         </template>
 
       </el-sub-menu>
@@ -26,8 +26,10 @@ const sidemenus = reactive([
   {
     title: '會員中心',
     icon: 'Avatar',
+    path: '/',
     subItem: [
-      { title: '基本資料設定' },
+      { title: '基本資料設定',
+      path: '/' },
       { title: '實名認證(KYC)' },
       { title: '商店' },
       { title: '帳戶餘額/提領' },
@@ -62,6 +64,17 @@ const sidemenus = reactive([
     icon: 'TrendCharts'
   }
 ])
+const changePageTo = function(thisPath){
+  console.log('切換頁面到:', thisPath)
+  // this.$router.replace(thisPath)
+}
+const hasSubMenu = (subItem)=>{
+  if(subItem && subItem.length > 0){
+    return true
+  } else {
+    return false
+  }
+}
 console.log('sideMenus', sidemenus)
 </script>
 

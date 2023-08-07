@@ -17,15 +17,24 @@
 
 <script setup>
 import {ref, onMounted} from 'vue';
-const logOutCounter = ref(600);
-onMounted(()=>{
-  setInterval(()=>{
+const logOutCounter = ref(10);
+let intervalId = null;
+
+function startCountdown (){
+  intervalId = setInterval(()=>{
     if (logOutCounter.value > 0){
       logOutCounter.value--;
     } else {
+      stopCountdown()
       alert('請重新登入')
     }
   }, 1000)
+}
+function stopCountdown(){
+  clearInterval(intervalId);
+};
+onMounted(()=>{
+  startCountdown();
 })
 
 </script>

@@ -4,7 +4,9 @@
       <el-aside><Sidemenu /></el-aside>
       <div class="Content">
         <el-row><Header /></el-row>
-        <el-row> Main Content</el-row>
+        <el-row>
+          <rounter-view></rounter-view>
+        </el-row>
       </div>
     </el-container>
   </div>
