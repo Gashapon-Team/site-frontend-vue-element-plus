@@ -7,12 +7,11 @@
 
     <el-sub-menu v-for="(sidemenu, i) in sidemenus" :key="i" :index="i" :title="sidemenu.title">
       <template #title>
-        <component style="widh:20px" :is="sidemenu.icon"></component>
+        <component v-if="sidemenu.icon" style="widh:20px" :is="sidemenu.icon"></component>
         <span>{{sidemenu.title}}</span>
       </template>
       <el-sub-menu v-for="(item, sub_index) in sidemenu.subItem" :key="sub_index" :index="sub_index">
         <template #title>
-          <!-- <el-icon><location /></el-icon> -->
           <span>{{item.title}}</span>
         </template>
 
@@ -26,7 +25,7 @@ import { ref, reactive } from 'vue'
 const sidemenus = reactive([
   {
     title: '會員中心',
-    icon: 'User',
+    icon: 'Avatar',
     subItem: [
       { title: '基本資料設定' },
       { title: '實名認證(KYC)' },
@@ -40,33 +39,27 @@ const sidemenus = reactive([
   },
   {
     title: '幫助中心',
-    icon: 'help-icon',
-    subItem: [{ title: 'test' }]
+    icon: 'WarningFilled',
   },
   {
     title: '通知中心',
-    icon: 'inform-icon',
-    subItem: [{ title: 'test' }]
+    icon: 'ChatLineSquare',
   },
   {
     title: '電子發票',
-    icon: 'clectronic-invoices-icon'
+    icon: 'Tickets'
   },
   {
     title: '捐款',
-    icon: 'donation-icon'
+    icon: 'Pointer'
   },
   {
     title: '物流',
-    icon: 'logistics-icon'
-  },
-  {
-    title: '幫助中心',
-    icon: 'help-icon'
+    icon: 'Van'
   },
   {
     title: '金流',
-    icon: 'money-icon'
+    icon: 'TrendCharts'
   }
 ])
 console.log('sideMenus', sidemenus)
@@ -76,11 +69,12 @@ console.log('sideMenus', sidemenus)
 @import "../../style/main.scss";
 .sideMenuLayout {
   .sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo {
-    background-color: $mainBG;
+    background-color: $blue;
     height: 100vh;
   }
   .el-sub-menu__title{
     color: #ffffff;
+    font-size: 16px;
     &:hover {
       background: initial;
     }
@@ -92,21 +86,25 @@ console.log('sideMenus', sidemenus)
     }
   }
   .title {
-    background-color: $mainBG;
-    padding: 12px 12px 12px 24px;
+    background-color: $blue;
+    padding: 12px 12px 30px 24px;
     color: #ffffff;
+    font-weight: 200;
   }
   .subtitle {
     padding-left: 24px;
+    padding-bottom: 10px;
     color: #ffffff;
-    background-color: $mainBG;
+    font-size: 8px;
+    font-weight: 400;
+    background-color: $blue;
   }
   .el-menu-item-group {
-    background-color: $mainBG;
+    background-color: $blue;
   }
   .el-sub-menu,
   .el-sub-menu:hover {
-    background-color: $mainBG;
+    background-color: $blue;
   }
   .el-sub-menu__title>svg{
     width: 20px;
