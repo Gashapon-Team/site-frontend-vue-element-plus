@@ -87,7 +87,7 @@ console.log('sideMenus', sidemenus)
   }
   .title {
     background-color: $blue;
-    padding: 12px 12px 30px 24px;
+    padding: 16px 16px 30px 24px;
     color: #ffffff;
     font-weight: 200;
   }
