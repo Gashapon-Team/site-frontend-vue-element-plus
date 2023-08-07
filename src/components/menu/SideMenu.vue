@@ -72,34 +72,50 @@ const sidemenus = reactive([
 console.log('sideMenus', sidemenus)
 </script>
 
-<style lang="scss" scoped>
-.sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo {
-  background-color: #3b82f6;
-  height: 100vh;
-}
-.el-container {
-  .el-sub-menu__title,
-  li.el-menu-item {
+<style lang="scss">
+@import "../../style/main.scss";
+.sideMenuLayout {
+  .sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo {
+    background-color: $mainBG;
+    height: 100vh;
+  }
+  .el-sub-menu__title{
+    color: #ffffff;
+    &:hover {
+      background: initial;
+    }
+  }
+  .el-container {
+    .el-sub-menu__title,
+    li.el-menu-item {
+      color: #ffffff;
+    }
+  }
+  .title {
+    background-color: $mainBG;
+    padding: 12px 12px 12px 24px;
     color: #ffffff;
   }
-}
-.title {
-  // text-align: center;
-  padding: 12px 12px 12px 24px;
-  color: #ffffff;
-}
-.subtitle {
-  padding-left: 24px;
-  color: #ffffff;
-}
-.el-menu-item-group {
-  background-color: #3b82f6;
-}
-.el-sub-menu,
-.el-sub-menu:hover {
-  background-color: #3b82f6;
-}
-.el-sub-menu__title>svg{
-  width: 20px;
+  .subtitle {
+    padding-left: 24px;
+    color: #ffffff;
+    background-color: $mainBG;
+  }
+  .el-menu-item-group {
+    background-color: $mainBG;
+  }
+  .el-sub-menu,
+  .el-sub-menu:hover {
+    background-color: $mainBG;
+  }
+  .el-sub-menu__title>svg{
+    width: 20px;
+  }
+  .el-sub-menu__title>svg{
+    margin-right: 4px;
+  }
+  .el-menu.el-menu--inline {
+    margin-left: 20px;
+  }
 }
 </style>
