@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside width="200px"><Sidemenu /></el-aside>
+      <el-aside><Sidemenu /></el-aside>
         <el-row><Header /></el-row>
         <el-row> Main </el-row>
     </el-container>

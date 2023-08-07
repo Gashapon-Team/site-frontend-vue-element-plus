@@ -1,48 +1,105 @@
 <template>
-<el-menu
-        default-active="2"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-      >
-        <el-sub-menu index="1">
-          <template #title>
-            <el-icon><location /></el-icon>
-            <span>Navigator One</span>
-          </template>
-          <el-menu-item-group title="Group One">
-            <el-menu-item index="1-1">item one</el-menu-item>
-            <el-menu-item index="1-2">item two</el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="Group Two">
-            <el-menu-item index="1-3">item three</el-menu-item>
-          </el-menu-item-group>
-          <el-sub-menu index="1-4">
-            <template #title>item four</template>
-            <el-menu-item index="1-4-1">item one</el-menu-item>
-          </el-sub-menu>
-        </el-sub-menu>
-        <el-menu-item index="2">
-          <el-icon><icon-menu /></el-icon>
-          <span>Navigator Two</span>
-        </el-menu-item>
-        <el-menu-item index="3" disabled>
-          <el-icon><document /></el-icon>
-          <span>Navigator Three</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-          <el-icon><setting /></el-icon>
-          <span>Navigator Four</span>
-        </el-menu-item>
-      </el-menu>
+  <el-menu
+    class="el-menu-vertical-demo sideMenuLayout"
+  >
+    <h2 class="title m-2">NwebPay 藍新金流</h2>
+    <h4 class="subtitle m-2">會員平台管理</h4>
+
+    <el-sub-menu v-for="(sidemenu, i) in sidemenus" :key="i" :index="i" :title="sidemenu.title">
+      <template #title>
+        <component style="widh:20px" :is="sidemenu.icon"></component>
+        <span>{{sidemenu.title}}</span>
+      </template>
+      <el-sub-menu v-for="(item, sub_index) in sidemenu.subItem" :key="sub_index" :index="sub_index">
+        <template #title>
+          <!-- <el-icon><location /></el-icon> -->
+          <span>{{item.title}}</span>
+        </template>
+
+      </el-sub-menu>
+    </el-sub-menu>
+  </el-menu>
 </template>
 
-<script>
-export default {
-    name: 'sideMenu',
-}
+<script setup>
+import { ref, reactive } from 'vue'
+const sidemenus = reactive([
+  {
+    title: '會員中心',
+    icon: 'User',
+    subItem: [
+      { title: '基本資料設定' },
+      { title: '實名認證(KYC)' },
+      { title: '商店' },
+      { title: '帳戶餘額/提領' },
+      { title: '發票/對帳單' },
+      { title: '設定' },
+      { title: '消費者專區' },
+      { title: '平台商專區' }
+    ]
+  },
+  {
+    title: '幫助中心',
+    icon: 'help-icon',
+    subItem: [{ title: 'test' }]
+  },
+  {
+    title: '通知中心',
+    icon: 'inform-icon',
+    subItem: [{ title: 'test' }]
+  },
+  {
+    title: '電子發票',
+    icon: 'clectronic-invoices-icon'
+  },
+  {
+    title: '捐款',
+    icon: 'donation-icon'
+  },
+  {
+    title: '物流',
+    icon: 'logistics-icon'
+  },
+  {
+    title: '幫助中心',
+    icon: 'help-icon'
+  },
+  {
+    title: '金流',
+    icon: 'money-icon'
+  }
+])
+console.log('sideMenus', sidemenus)
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo {
+  background-color: #3b82f6;
+  height: 100vh;
+}
+.el-container {
+  .el-sub-menu__title,
+  li.el-menu-item {
+    color: #ffffff;
+  }
+}
+.title {
+  // text-align: center;
+  padding: 12px 12px 12px 24px;
+  color: #ffffff;
+}
+.subtitle {
+  padding-left: 24px;
+  color: #ffffff;
+}
+.el-menu-item-group {
+  background-color: #3b82f6;
+}
+.el-sub-menu,
+.el-sub-menu:hover {
+  background-color: #3b82f6;
+}
+.el-sub-menu__title>svg{
+  width: 20px;
+}
 </style>
