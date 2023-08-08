@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="varify_status__right">
-        <el-button class="varify_status__varify_btn" type="primary"><el-icon style="margin-right: 4px;"><CircleCheck /></el-icon>前往認證</el-button>
+        <el-button class="varify_status__varify_btn" @click="startVarify" type="primary"><el-icon style="margin-right: 4px;"><CircleCheck /></el-icon>前往認證</el-button>
       </div>
     </div>
 
@@ -28,12 +28,20 @@
         </div>
     </div>
 
+    <KYCHandlePage/>
+
   </div>
 </template>
-<script>
-export default {
+<script setup>
+import KYCHandlePage from './KYCHandlePage.vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+function startVarify(){
+  router.push('/handlers/KYCvarify')
 
 }
+
 </script>
 
 <style lang="scss" scope>

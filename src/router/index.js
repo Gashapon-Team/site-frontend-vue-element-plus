@@ -34,6 +34,21 @@ const router = createRouter({
       ]
     },
     {
+      path: '/handlers',
+      name: 'handlers',
+      component: ()=>import('../views/handlers.vue'),
+      children: [
+        {
+          path: 'KYCvarify',
+          component: ()=>import('../components/handlers/KYCvarify.vue')
+        },
+        // {
+        //   path: 'varifyName',
+        //   component: ()=>import('../views/varifyName.vue')
+        // }
+      ]
+    },
+    {
       path: '/tabs',
       name: 'tabs',
       component: () => import('../views/Tabs.vue')
