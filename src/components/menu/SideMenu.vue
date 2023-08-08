@@ -10,18 +10,18 @@
         <component v-if="sidemenu.icon"  style="widh:20px" :is="sidemenu.icon"></component>
         <span>{{sidemenu.title}}</span>
       </template>
-      <el-sub-menu v-for="(item, sub_index) in sidemenu.subItem"  :key="sub_index" :index="sub_index" :disabled="!hasSubMenu(item.subItem)">
+
+      <component :is="componentInSidemenu(sidemenu.subItem)" v-for="(item, sub_index) in sidemenu.subItem"  :key="sub_index" :index="sub_index">
         <template #title>
           <span @click="changePageTo(sidemenu.path)">{{item.title}}</span>
         </template>
-
-      </el-sub-menu>
+      </component>
     </el-sub-menu>
   </el-menu>
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 const sidemenus = reactive([
   {
     title: '會員中心',
@@ -64,6 +64,7 @@ const sidemenus = reactive([
     icon: 'TrendCharts'
   }
 ])
+
 const changePageTo = function(thisPath){
   console.log('切換頁面到:', thisPath)
   // this.$router.replace(thisPath)
@@ -75,7 +76,9 @@ const hasSubMenu = (subItem)=>{
     return false
   }
 }
-console.log('sideMenus', sidemenus)
+function componentInSidemenu(ifHasSubMenu){
+  return ifHasSubMenu?'el-menu-item':'el-sub-menu';
+}
 </script>
 
 <style lang="scss">
@@ -127,6 +130,14 @@ console.log('sideMenus', sidemenus)
   }
   .el-menu.el-menu--inline {
     margin-left: 20px;
+    background-color: $blue;
+    color: #ffffff;
+    .el-menu-item {
+      color: #ffffff;
+    }
+    .el-menu-item:hover {
+      background-color: $blue;
+    }
   }
 }
 </style>

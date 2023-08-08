@@ -17,7 +17,7 @@
 
 <script setup>
 import {ref, onMounted} from 'vue';
-const logOutCounter = ref(10);
+const logOutCounter = ref(600);
 let intervalId = null;
 
 function startCountdown (){
@@ -47,6 +47,9 @@ onMounted(()=>{
   flex-direction: row-reverse;
   &>li{
     padding: 4px;
+    &.is-disabled {
+      color: white;
+    }
   }
   .icon-color,
   .item-color {
