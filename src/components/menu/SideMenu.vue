@@ -5,7 +5,12 @@
     <h2 class="title m-2">NwebPay 藍新金流</h2>
     <h4 class="subtitle m-2">會員平台管理</h4>
 
-    <el-sub-menu v-for="(sidemenu, i) in sidemenus" :key="i" :index="i" :title="sidemenu.title" :disabled="!hasSubMenu(sidemenu.subItem)">
+    <el-sub-menu
+      v-for="(sidemenu, i) in sidemenus"
+      :key="i"
+      :index="i"
+      :title="sidemenu.title"
+      :class="sidemenu.subItem?'':'noSubItem'">
       <template #title>
         <component v-if="sidemenu.icon"  style="widh:20px" :is="sidemenu.icon"></component>
         <span>{{sidemenu.title}}</span>
@@ -121,6 +126,9 @@ function componentInSidemenu(ifHasSubMenu){
   .el-sub-menu,
   .el-sub-menu:hover {
     background-color: $blue;
+  }
+  .el-sub-menu.noSubItem .el-icon.el-sub-menu__icon-arrow {
+    display: none;
   }
   .el-sub-menu__title>svg{
     width: 20px;
