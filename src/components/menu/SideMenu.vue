@@ -11,7 +11,7 @@
       :class="sidemenu.subItem ? '' : 'noSubItem'"
     >
       <template #title>
-        <component v-if="sidemenu.icon" style="widh: 20px" :is="sidemenu.icon"></component>
+        <component v-if="sidemenu.icon" style="width: 20px" :is="sidemenu.icon"></component>
         <span @click="changePageTo(sidemenu.path)">{{ sidemenu.title }}</span>
       </template>
 
@@ -94,6 +94,11 @@ function componentInSidemenu(ifHasSubMenu) {
 .sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo{
   height: 100vh;
   background: #07229a;
+  width: 100%;
+    // height: 100%;
+  overflow-y: scroll;
+  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
   .sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo {
     background-color: $blue;
     height: 100vh;

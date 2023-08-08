@@ -1,10 +1,12 @@
 <template>
-  This is a base data page.
+    <div class="baseData"></div>
 </template>
 
 <script>
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.baseData {
+  background: black;
+}
 </style>

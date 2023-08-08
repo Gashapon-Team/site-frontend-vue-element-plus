@@ -26,8 +26,8 @@ defineComponent({ Sidemenu, Header })
   flex-direction: column;
   width: 100%;
 }
-// .sidemenu {
-//   background-color: $blue;
-//   height: 100vh;
-// }
+.sidemenu{
+  height: 100%;
+  overflow: hidden;
+}
 </style>
