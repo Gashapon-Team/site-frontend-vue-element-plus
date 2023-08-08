@@ -1,7 +1,5 @@
 <template>
-  <el-menu
-    class="el-menu-vertical-demo sideMenuLayout"
-  >
+  <el-menu class="el-menu-vertical-demo sideMenuLayout">
     <h2 class="title m-2">NwebPay 藍新金流</h2>
     <h4 class="subtitle m-2">會員平台管理</h4>
 
@@ -10,15 +8,21 @@
       :key="i"
       :index="i"
       :title="sidemenu.title"
-      :class="sidemenu.subItem?'':'noSubItem'">
+      :class="sidemenu.subItem ? '' : 'noSubItem'"
+    >
       <template #title>
-        <component v-if="sidemenu.icon"  style="widh:20px" :is="sidemenu.icon"></component>
-        <span>{{sidemenu.title}}</span>
+        <component v-if="sidemenu.icon" style="widh: 20px" :is="sidemenu.icon"></component>
+        <span>{{ sidemenu.title }}</span>
       </template>
 
-      <component :is="componentInSidemenu(sidemenu.subItem)" v-for="(item, sub_index) in sidemenu.subItem"  :key="sub_index" :index="sub_index">
+      <component
+        :is="componentInSidemenu(sidemenu.subItem)"
+        v-for="(item, sub_index) in sidemenu.subItem"
+        :key="sub_index"
+        :index="sub_index"
+      >
         <template #title>
-          <span @click="changePageTo(sidemenu.path)">{{item.title}}</span>
+          <span @click="changePageTo(sidemenu.path)">{{ item.title }}</span>
         </template>
       </component>
     </el-sub-menu>
@@ -33,8 +37,7 @@ const sidemenus = reactive([
     icon: 'Avatar',
     path: '/',
     subItem: [
-      { title: '基本資料設定',
-      path: '/' },
+      { title: '基本資料設定', path: '/' },
       { title: '實名認證(KYC)' },
       { title: '商店' },
       { title: '帳戶餘額/提領' },
@@ -46,11 +49,11 @@ const sidemenus = reactive([
   },
   {
     title: '幫助中心',
-    icon: 'WarningFilled',
+    icon: 'WarningFilled'
   },
   {
     title: '通知中心',
-    icon: 'ChatLineSquare',
+    icon: 'ChatLineSquare'
   },
   {
     title: '電子發票',
@@ -70,35 +73,28 @@ const sidemenus = reactive([
   }
 ])
 
-const changePageTo = function(thisPath){
+const changePageTo = function (thisPath) {
   console.log('切換頁面到:', thisPath)
   // this.$router.replace(thisPath)
 }
-const hasSubMenu = (subItem)=>{
-  if(subItem && subItem.length > 0){
+const hasSubMenu = (subItem) => {
+  if (subItem && subItem.length > 0) {
     return true
   } else {
     return false
   }
 }
-function componentInSidemenu(ifHasSubMenu){
-  return ifHasSubMenu?'el-menu-item':'el-sub-menu';
+function componentInSidemenu(ifHasSubMenu) {
+  return ifHasSubMenu ? 'el-menu-item' : 'el-sub-menu'
 }
 </script>
 
 <style lang="scss">
-@import "../../style/main.scss";
+@import '../../style/main.scss';
 .sideMenuLayout {
   .sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo {
     background-color: $blue;
     height: 100vh;
-  }
-  .el-sub-menu__title{
-    color: #ffffff;
-    font-size: 16px;
-    &:hover {
-      background: initial;
-    }
   }
   .el-container {
     .el-sub-menu__title,
@@ -131,10 +127,15 @@ function componentInSidemenu(ifHasSubMenu){
     &.noSubItem .el-icon.el-sub-menu__icon-arrow {
       display: none;
     }
-    &__title>svg{
-      width: 20px;
+    &__title {
+      color: #ffffff;
+      font-size: 16px;
+      &:hover {
+        background: initial;
+      }
     }
-    &__title>svg{
+    &__title > svg {
+      width: 20px;
       margin-right: 4px;
     }
   }
@@ -144,9 +145,9 @@ function componentInSidemenu(ifHasSubMenu){
     color: #ffffff;
     .el-menu-item {
       color: #ffffff;
-    }
-    .el-menu-item:hover {
-      background-color: $blue;
+      &:hover {
+        background-color: $blue;
+      }
     }
   }
 }
