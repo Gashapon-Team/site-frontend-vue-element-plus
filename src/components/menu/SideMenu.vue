@@ -95,7 +95,6 @@ function componentInSidemenu(ifHasSubMenu) {
   height: 100vh;
   background: #07229a;
   width: 100%;
-    // height: 100%;
   overflow-y: scroll;
   padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
   box-sizing: content-box; /* So the width will be 100% + 17px */
@@ -156,6 +155,9 @@ function componentInSidemenu(ifHasSubMenu) {
         background-color: $blue;
       }
     }
+  }
+  .el-sub-menu:not(.is-opened) .el-sub-menu__title .el-icon.el-sub-menu__icon-arrow {
+    transform: rotate(-90deg) !important;
   }
 }
 </style>
