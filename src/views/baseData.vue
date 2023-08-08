@@ -1,14 +1,11 @@
 <template>
-    <div class="baseData"></div>
+    <div class="baseData">
+      <h3>基本資料設定</h3>
+    </div>
 </template>
 
 <script>
 </script>
 
 <style lang="scss" scoped>
-.baseData {
-  background: black;
-  width: 100%;
-  height: 100%;
-}
 </style>

@@ -5,7 +5,7 @@
       <div class="Content">
         <el-row><Header /></el-row>
         <el-row>
-          <rounter-view></rounter-view>
+          <router-view></router-view>
         </el-row>
       </div>
     </el-container>
