@@ -81,8 +81,7 @@ const sidemenus = reactive([
 const router = useRouter();
 
 const changePageTo = function (thisPath) {
-  console.log('切換頁面到:', thisPath)
-  router.push(thisPath)
+  if(thisPath) router.push(thisPath)
 }
 function componentInSidemenu(ifHasSubMenu) {
   return ifHasSubMenu ? 'el-menu-item' : 'el-sub-menu'
@@ -93,13 +92,13 @@ function componentInSidemenu(ifHasSubMenu) {
 @import '../../style/main.scss';
 .sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo{
   height: 100vh;
-  background: #07229a;
+  background: $mainBG;
   width: 100%;
   overflow-y: scroll;
   padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
   box-sizing: content-box; /* So the width will be 100% + 17px */
   .sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo {
-    background-color: $blue;
+    background-color: $mainBG;
     height: 100vh;
   }
   .el-container {
@@ -109,7 +108,7 @@ function componentInSidemenu(ifHasSubMenu) {
     }
   }
   .title {
-    background-color: $blue;
+    background-color: $mainBG;
     padding: 16px 16px 30px 24px;
     color: #ffffff;
     font-weight: 200;
@@ -120,15 +119,15 @@ function componentInSidemenu(ifHasSubMenu) {
     color: #ffffff;
     font-size: 8px;
     font-weight: 400;
-    background-color: $blue;
+    background-color: $mainBG;
   }
   .el-menu-item-group {
-    background-color: $blue;
+    background-color: $mainBG;
   }
   .el-sub-menu {
-    background-color: $blue;
+    background-color: $mainBG;
     &:hover {
-      background-color: $blue;
+      background-color: $mainBG;
     }
     &.noSubItem .el-icon.el-sub-menu__icon-arrow {
       display: none;
@@ -147,12 +146,12 @@ function componentInSidemenu(ifHasSubMenu) {
   }
   .el-menu.el-menu--inline {
     margin-left: 20px;
-    background-color: $blue;
+    background-color: $mainBG;
     color: #ffffff;
     .el-menu-item {
       color: #ffffff;
       &:hover {
-        background-color: $blue;
+        background-color: $mainBG;
       }
     }
   }

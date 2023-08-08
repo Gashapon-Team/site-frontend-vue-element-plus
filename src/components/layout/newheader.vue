@@ -6,7 +6,7 @@
     @select="handleSelect"
   >
   <el-sub-menu index="1" class="item-color"  style="border-bottom:none;background: initial;" >
-    <template #title><span style="color:#07229a;">智慧家居公司</span></template>
+    <template #title><span class="companyName">智慧家居公司</span></template>
     <el-menu-item style="border-bottom:none;background: initial;" index="1-1">登出</el-menu-item>
   </el-sub-menu>
     <el-menu-item index="2" style="border-bottom:none;background: initial;"><el-icon class="icon-color"><QuestionFilled /></el-icon></el-menu-item>
@@ -53,13 +53,16 @@ onMounted(()=>{
   }
   .icon-color,
   .item-color {
-    color: $blue
+    color: $mainBG
   }
   .text-color {
     color: #666666;
   }
   .el-sub-menu__title.el-tooltip__trigger.el-tooltip__trigger {
     border-bottom: none;
+  }
+  .companyName {
+    color: $mainBG;
   }
 }
 </style>
