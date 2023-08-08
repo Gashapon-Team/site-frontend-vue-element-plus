@@ -12,7 +12,7 @@
     >
       <template #title>
         <component v-if="sidemenu.icon" style="widh: 20px" :is="sidemenu.icon"></component>
-        <span>{{ sidemenu.title }}</span>
+        <span @click="changePageTo(sidemenu.path)">{{ sidemenu.title }}</span>
       </template>
 
       <component
@@ -22,7 +22,7 @@
         :index="sub_index"
       >
         <template #title>
-          <span @click="changePageTo(sidemenu.path)">{{ item.title }}</span>
+          <span @click="changePageTo(item.path)">{{ item.title }}</span>
         </template>
       </component>
     </el-sub-menu>
@@ -30,15 +30,15 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { reactive  } from 'vue'
+import { useRouter } from 'vue-router';
 const sidemenus = reactive([
   {
     title: '會員中心',
     icon: 'Avatar',
-    path: '/',
     subItem: [
-      { title: '基本資料設定', path: '/' },
-      { title: '實名認證(KYC)' },
+      { title: '基本資料設定', path: '/homepage/basedata' },
+      { title: '實名認證(KYC)', path: '/homepage/varifyName' },
       { title: '商店' },
       { title: '帳戶餘額/提領' },
       { title: '發票/對帳單' },
@@ -49,40 +49,40 @@ const sidemenus = reactive([
   },
   {
     title: '幫助中心',
-    icon: 'WarningFilled'
+    icon: 'WarningFilled',
+    path: '/homepage/varifyName'
   },
   {
     title: '通知中心',
-    icon: 'ChatLineSquare'
+    icon: 'ChatLineSquare',
+    path: '/homepage/ChatLineSquare'
   },
   {
     title: '電子發票',
-    icon: 'Tickets'
+    icon: 'Tickets',
+    path: '/homepage/Tickets'
   },
   {
     title: '捐款',
-    icon: 'Pointer'
+    icon: 'Pointer',
+    path: '/homepage/Pointer'
   },
   {
     title: '物流',
-    icon: 'Van'
+    icon: 'Van',
+    path: '/homepage/Van'
   },
   {
     title: '金流',
-    icon: 'TrendCharts'
+    icon: 'TrendCharts',
+    path: '/homepage/TrendCharts'
   }
 ])
+const router = useRouter();
 
 const changePageTo = function (thisPath) {
   console.log('切換頁面到:', thisPath)
-  // this.$router.replace(thisPath)
-}
-const hasSubMenu = (subItem) => {
-  if (subItem && subItem.length > 0) {
-    return true
-  } else {
-    return false
-  }
+  router.push(thisPath)
 }
 function componentInSidemenu(ifHasSubMenu) {
   return ifHasSubMenu ? 'el-menu-item' : 'el-sub-menu'

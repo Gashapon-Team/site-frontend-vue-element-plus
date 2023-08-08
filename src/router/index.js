@@ -21,7 +21,17 @@ const router = createRouter({
     {
       path: '/homepage',
       name: 'homepage',
-      component: Homepage
+      component: Homepage,
+      children: [
+        {
+          path: 'basedata',
+          component: ()=>import('../views/baseData.vue')
+        },
+        {
+          path: 'varifyName',
+          component: ()=>import('../views/varifyName.vue')
+        }
+      ]
     },
     {
       path: '/tabs',
