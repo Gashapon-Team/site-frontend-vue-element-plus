@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-aside><Sidemenu /></el-aside>
+      <el-aside class="sidemenu"><Sidemenu /></el-aside>
       <div class="Content">
         <el-row><Header /></el-row>
         <el-row>
@@ -19,10 +19,15 @@ import { defineComponent } from 'vue'
 
 defineComponent({ Sidemenu, Header })
 </script>
-<style scoped>
+<style lang="scss" scoped>
+@import '../style/main.scss';
 .Content{
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+// .sidemenu {
+//   background-color: $blue;
+//   height: 100vh;
+// }
 </style>

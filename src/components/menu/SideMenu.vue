@@ -91,7 +91,9 @@ function componentInSidemenu(ifHasSubMenu) {
 
 <style lang="scss">
 @import '../../style/main.scss';
-.sideMenuLayout {
+.sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo{
+  height: 100vh;
+  background: #07229a;
   .sideMenuLayout.el-menu.el-menu--vertical.el-menu-vertical-demo {
     background-color: $blue;
     height: 100vh;
