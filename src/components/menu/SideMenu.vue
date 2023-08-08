@@ -123,18 +123,20 @@ function componentInSidemenu(ifHasSubMenu){
   .el-menu-item-group {
     background-color: $blue;
   }
-  .el-sub-menu,
-  .el-sub-menu:hover {
+  .el-sub-menu {
     background-color: $blue;
-  }
-  .el-sub-menu.noSubItem .el-icon.el-sub-menu__icon-arrow {
-    display: none;
-  }
-  .el-sub-menu__title>svg{
-    width: 20px;
-  }
-  .el-sub-menu__title>svg{
-    margin-right: 4px;
+    &:hover {
+      background-color: $blue;
+    }
+    &.noSubItem .el-icon.el-sub-menu__icon-arrow {
+      display: none;
+    }
+    &__title>svg{
+      width: 20px;
+    }
+    &__title>svg{
+      margin-right: 4px;
+    }
   }
   .el-menu.el-menu--inline {
     margin-left: 20px;
