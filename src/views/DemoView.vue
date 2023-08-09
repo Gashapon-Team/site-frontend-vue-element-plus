@@ -1,7 +1,7 @@
 <template>
 
   <el-container>
-    <el-aside width="278px">
+    <el-aside>
         <main-menu></main-menu>
     </el-aside>
 
@@ -42,18 +42,25 @@ let contentPage = shallowRef(KYC);
 </script>
 
 
-<style>
-* {
-  margin: 0px;
-  padding: 0px;
+<style scoped lang="scss">
+.el-aside {
+  width: $aside-width;
 }
 
 .el-header {
-  padding: 0px !important;
+  height: $header-height;
+  padding: 0px;
 }
 
 .el-main {
-  background-color: #eeeeee;
-  min-height: calc(100vh - 60px);
+  // background-color: #F9F9F9;
+  background-color: #E5E7EB;
+  min-height: calc(100vh - $header-height - $footer-height);
+  padding: 24px 40px;
+}
+
+.el-footer {
+  height: $footer-height;
+  padding: 0px;
 }
 </style>

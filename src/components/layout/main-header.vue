@@ -1,19 +1,30 @@
 <template>
     <div class="top_header">
-        <div>{{timer}} 秒自動登出</div>
+        <div style="margin-right:20px;">{{timer}} 秒自動登出</div>
 
-        <el-icon><Bell /></el-icon>
-        <el-icon><QuestionFilled /></el-icon>
+        <el-button type="primary" link>
+            <Icon size="24" style="margin-right:20px;"><NotificationsNoneFilled /></Icon>
+        </el-button>
+        <el-button type="primary" link>
+            <Icon size="24" style="margin-right:20px;"><HelpOutlineFilled /></Icon>
+        </el-button>
+        <!-- <el-icon><Bell /></el-icon> -->
+        <!-- <el-icon><QuestionFilled /></el-icon> -->
 
-        <div class="border-r"></div>
+        <!-- <div class="border-r"></div> -->
+        <el-divider direction="vertical" />
 
         <el-menu
-            :default-active="'1'"
             :ellipsis="false"
             mode="horizontal"
+            popper-offset="1"
+            style="margin-right:40px;"
         >
-            <el-sub-menu index="2-1">
-                <template #title>小查理企業</template>
+            <el-sub-menu index="2">
+                <template #title>
+                    <p style="color:#3B82F6; font-size:16px; font-weight:500; letter-spacing:0.64px;">小查理企業</p>
+                </template>
+                <el-menu-item index="2-1">會員基本資料</el-menu-item>
                 <el-menu-item index="2-2">登出</el-menu-item>
             </el-sub-menu>
         </el-menu>
@@ -24,6 +35,8 @@
 <script setup>
 // import {ref, reactive} from 'vue';
 import { ref } from 'vue';
+import { Icon } from "@vicons/utils"; //https://xicons.org/
+import { NotificationsNoneFilled, HelpOutlineFilled } from '@vicons/material'
 
 let timer = ref(600);
 const timerCount = setInterval(() => {
@@ -35,43 +48,57 @@ const timerCount = setInterval(() => {
 </script>
 
 <style scoped lang="scss">
-$blue: #07229a;
-$text: #606266;
-
 .top_header {
     position: fixed;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     z-index: 999;
-    width: calc(100% - 300px);
-    height: 60px;
+    width: calc(100% - $aside-width);
     background: #FFFFFF;
-    box-shadow: 0 4px 3px -2px #dddddd;
+    height: $header-height;
+    box-shadow: $header-footer-box-shadow;
     color: $text;
+
+    .el-sub-menu {
+        height: $header-height;
+    }
+
+    .el-button {
+        margin-left: 0px;
+    }
+
+    .el-divider--vertical{
+        margin: 0;
+    }
 }
 
-.el-icon {
-    margin: 0px 10px;
-    color: $blue;
-    cursor: pointer;
-}
 
-.border-r {
-    height: 30px;
-    border-right: 2px solid #ebebeb;
-    ;
-}
 
-:deep(.el-menu--horizontal>.el-sub-menu .el-sub-menu__title) {
-    color: $blue !important;
-    font-size: 18px;
-    font-weight: 700;
-    border-bottom: 0px solid transparent;
-}
 
-:deep(.el-menu) {
-    border-width: 0px;
-    height: 30px;
-}
+
+
+
+// .el-icon {
+//     margin: 0px 10px;
+//     color: $blue;
+//     cursor: pointer;
+// }
+
+// .border-r {
+//     height: 30px;
+//     border-right: 2px solid #ebebeb;
+// }
+
+// :deep(.el-menu--horizontal>.el-sub-menu .el-sub-menu__title) {
+//     color: $blue !important;
+//     font-size: 18px;
+//     font-weight: 700;
+//     border-bottom: 0px solid transparent;
+// }
+
+// :deep(.el-menu) {
+//     border-width: 0px;
+//     height: 30px;
+// }
 </style>
