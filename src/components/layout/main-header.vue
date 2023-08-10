@@ -12,7 +12,7 @@
             :ellipsis="false"
             mode="horizontal"
         >
-            <el-sub-menu index="2-1">
+            <el-sub-menu index="2-1" expand-close-icon='CaretBottom' expand-open-icon='CaretTop'>
                 <template #title>小查理企業</template>
                 <el-menu-item index="2-2">登出</el-menu-item>
             </el-sub-menu>
@@ -39,16 +39,17 @@ $blue: #07229a;
 $text: #606266;
 
 .top_header {
-    position: fixed;
+    // position: fixed;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     z-index: 999;
-    width: calc(100% - 300px);
+    // width: calc(100% - 300px);
     height: 60px;
     background: #FFFFFF;
     box-shadow: 0 4px 3px -2px #dddddd;
     color: $text;
+    padding: 0 40px;
 }
 
 .el-icon {

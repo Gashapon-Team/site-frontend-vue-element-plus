@@ -17,5 +17,7 @@ $text: #606266;
 
     align-items: center;
     color: $text;
+
+    line-height: 60px;
 }
 </style>

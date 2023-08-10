@@ -2,7 +2,7 @@
     <div class="left_menu">
         <!--logo-->
         <div class="logo">
-            <h1>LoremIps店家名稱</h1>
+            <h1>NewebPay藍新金流</h1>
             <h3>會員平台管理</h3>
         </div>
         <el-scrollbar height="80vh" always wrap-class="scrollbar">
@@ -11,8 +11,10 @@
                 background-color="Transparent"   
                 text-color="#fff"
                 unique-opened
+                class="menucss"
+
             >
-                <el-sub-menu :index="`${idx1}`" v-for="(menu,idx1) in menus">
+                <el-sub-menu :index="`${idx1}`" v-for="(menu,idx1) in menus" expand-close-icon='ArrowRightBold' expand-open-icon='ArrowUpBold'>
                     <template #title>
                         <el-icon><component :is="menu.icon" /></el-icon>
                         <h3>{{menu.mainTitle}}</h3>
@@ -75,48 +77,56 @@ const menus = reactive([
     },
     {
         mainTitle: '通知中心',
-        icon: 'WarningFilled',
+        icon: 'ChatLineSquare',
     },
     {
         mainTitle: '電子發票',
-        icon: 'WarningFilled',
+        icon: 'Tickets',
     },
     {
         mainTitle: '捐款',
-        icon: 'WarningFilled',
+        icon: 'Money',
     },
     {
         mainTitle: '物流',
-        icon: 'WarningFilled',
+        icon: 'ShoppingCart',
+    },
+    {
+        mainTitle: '金流',
+        icon: 'ShoppingCart',
     }
 ]);
 </script>
 
 <style scoped lang="scss">
 .left_menu {
-    position: fixed;
-    min-height: 100vh;
-    background-image: linear-gradient(to top right, #07229a, #0064ff);
-    padding:15px 10px;
+    // position: fixed;
+    min-height: 110vh;
+    background-image: linear-gradient(90deg, #1E40AF, #397EF2);
+    // padding:15px 10px;
     color:#FFFFFF;
     z-index: 999;
 
-    .logo{
-        padding:0px 10px;
-        h1{
-            font-size:28px;
-            margin-bottom:30px;
-        }
 
+    .logo{
+        h1{
+            padding:24px 32px;
+            font-size:20px;
+        }
         h3 {
-            margin-bottom: 20px;
+            font-size:14px;
+            color:#E5E7EB;
+            padding:8px 32px;
         }
     }
 
     .el-menu{
         border-width:0px;
-
+        padding: 12px 32px;
     }
+    // .el-menu-item * {
+    //     padding-left: 12%;
+    // }
 
     :deep(.el-icon.el-sub-menu__icon-arrow svg) {
         width: 2em;
@@ -132,6 +142,11 @@ const menus = reactive([
     .scrollbar{
         color:white;
     }
-    
 }
+</style>
+
+<style>
+    .left_menu .el-sub-menu__title{
+        --el-menu-level-padding: 0 !important;
+    }
 </style>
