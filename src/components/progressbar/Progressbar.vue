@@ -42,7 +42,6 @@ $default_color:#9ca3af;
 $progress_color: #e5e7eb;
 .Progressbar {
   width: 100vw;
-  height: calc(100vh - 40px);
   display: flex;
   align-items: center;
   justify-content: center;

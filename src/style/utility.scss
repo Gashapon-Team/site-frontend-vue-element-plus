@@ -1,0 +1,11 @@
+.input {
+  &--lg {
+    width: 320px;
+  }
+}
+$max: 10;
+@for $i from 1 through $max {
+  .mb-#{$i} {
+      margin-bottom: $i*4px;
+  }
+}
