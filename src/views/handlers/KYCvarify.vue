@@ -1,8 +1,11 @@
 <template>
-  <Progressbar></Progressbar>
+  <div>
+    <Progressbar></Progressbar>
+
+  </div>
 </template>
 <script setup>
-import Progressbar from './Progressbar.vue'
+import Progressbar from '../../components/progressbar/Progressbar.vue'
 import { defineComponent } from 'vue'
 defineComponent({ Progressbar})
 

@@ -40,7 +40,7 @@ const router = createRouter({
       children: [
         {
           path: 'KYCvarify',
-          component: ()=>import('../components/handlers/KYCvarify.vue')
+          component: ()=>import('../views/handlers/KYCvarify.vue')
         },
         // {
         //   path: 'varifyName',
