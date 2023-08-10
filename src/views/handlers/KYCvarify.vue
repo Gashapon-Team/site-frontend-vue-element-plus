@@ -11,8 +11,21 @@
                 <p>這裡顯示說明文字</p>
               </div>
               <div class="content">
-                <div class="mb-1">中文姓名</div>
-                <el-input class="input--lg" v-model="input" placeholder="Please input" clearable />
+
+                <DefaultInput
+                  :label="'中文姓名'"
+                  :placeholder="'您的中文姓名'"
+                  :tips="'We\'ll never share yourt email with anyone else.'"
+                  @customEvent="handleCustomEvent"
+                  ></DefaultInput>
+
+                <DefaultInput
+                  :label="'中文姓名'"
+                  :placeholder="'您的中文姓名'"
+                  :tips="'We\'ll never share yourt email with anyone else.'"
+                  :class="'input--md'"
+                  ></DefaultInput>
+
               </div>
 
             </div>
@@ -22,9 +35,10 @@
   </div>
 </template>
 <script setup>
-import Progressbar from '../../components/progressbar/Progressbar.vue'
-import { defineComponent } from 'vue'
-defineComponent({ Progressbar})
+import Progressbar from '../../components/progressbar/Progressbar.vue';
+import DefaultInput from '../../components/input/defaultInput.vue';
+import { defineComponent, ref } from 'vue'
+
 
 </script>
 <style lang="scss" scoped>
@@ -62,6 +76,7 @@ defineComponent({ Progressbar})
       width: 60%;
       display: flex;
       flex-direction: column;
+
     }
   }
 }

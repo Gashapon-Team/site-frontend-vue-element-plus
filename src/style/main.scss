@@ -1,8 +1,5 @@
+@import './variable';
 @import './utility.scss';
-
-$text:#606266;
-$blue:#07229a;
-$mainBG: #3B82F6;
 
 .el-tabs__item{
     font-weight:500 !important;
@@ -47,4 +44,12 @@ $mainBG: #3B82F6;
         opacity: 1;
     }
     
+}
+
+//input
+.custom_input {
+    @extend .mb-4;
+    .tips {
+        color: $default_color_grey;
+      }
 }

@@ -38,7 +38,6 @@ const progress_bar_items = reactive([
 
 </script>
 <style lang="scss" scoped>
-$default_color:#9ca3af;
 $progress_color: #e5e7eb;
 .Progressbar {
   width: 100vw;
@@ -54,7 +53,7 @@ $progress_color: #e5e7eb;
     width: 60%;
     max-width: 500px;
     > li {
-      background-color: $default_color;
+      background-color: $default_color_grey;
       border-radius: 999px;
       list-style: none;
       width: 20px;
