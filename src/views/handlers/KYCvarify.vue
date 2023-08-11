@@ -4,10 +4,11 @@
     <div class="KYCvarify_layout">
       <div>
         <h3 class="mb-2">實名認證(KYC)</h3>
-        <p>依據《第三方支付服務業防治洗錢及打擊資恐辦法》規定，藍新有義務進行客戶身分調查...</p>  
+        <p>依據《第三方支付服務業防治洗錢及打擊資恐辦法》規定，藍新有義務進行客戶身分調查...</p>
       </div>
       <div class="KYCvarify">
         <div class="KYCvarify_data__eara">
+          <!-- 身分證資料 -->
           <div class="KYCvarify__section">
             <div class="title">
               <h4>身分資料</h4>
@@ -20,7 +21,7 @@
                 :tips="'We\'ll never share yourt email with anyone else.'"
                 :classes="'input--md'"
               ></DefaultInput>
-  
+
               <div class="d-flex">
                 <DefaultInput
                   :label="'英文名字'"
@@ -28,7 +29,7 @@
                   :tips="'與護照相同的英文名字'"
                   :classes="'input--sm mr-4'"
                 ></DefaultInput>
-  
+
                 <DefaultInput
                   :label="'英文姓氏'"
                   :placeholder="'First Name'"
@@ -36,7 +37,7 @@
                   :classes="'input--sm'"
                 ></DefaultInput>
               </div>
-  
+
               <DatePickerInput
                 :label="'出生年月日'"
                 :placeholder="'選擇日期'"
@@ -46,9 +47,9 @@
               </DatePickerInput>
             </div>
           </div>
-  
+
           <div class="line line--full"></div>
-  
+          <!-- 國民身分證 -->
           <div class="KYCvarify__section">
             <div class="title">
               <h4>國民身分證</h4>
@@ -61,33 +62,79 @@
                 :tips="'1碼英文+9碼數字'"
                 :classes="'input--md'"
               ></DefaultInput>
-  
+
               <div class="d-flex">
-                <DefaultInput
-                  :label="'英文名字'"
-                  :placeholder="'First Name'"
-                  :tips="'與護照相同的英文名字'"
-                  :classes="'input--sm mr-4'"
-                ></DefaultInput>
-  
-                <DefaultInput
-                  :label="'英文姓氏'"
-                  :placeholder="'First Name'"
-                  :tips="'與護照相同的英文名字'"
-                  :classes="'input--sm'"
-                ></DefaultInput>
+                <SelectInput
+                  :label="'發證民國年'"
+                  :placeholder="'請選擇民國年'"
+                  :classes="'input--xs'"
+                ></SelectInput>
+
+                <SelectInput
+                  :label="'月份'"
+                  :placeholder="'請選擇月份'"
+                  :classes="'input--xs'"
+                ></SelectInput>
+
+                <SelectInput
+                  :label="'日期'"
+                  :placeholder="'請選擇日期'"
+                  :classes="'input--xs'"
+                ></SelectInput>
               </div>
-  
-              <DatePickerInput
-                :label="'出生年月日'"
-                :placeholder="'選擇日期'"
-                :tips="'We\'ll never share your email with anyone else.'"
-                :classes="'input--sm'"
-              >
-              </DatePickerInput>
+
+              <div class="d-flex">
+                <SelectInput
+                  :label="'發證地點'"
+                  :placeholder="'請選擇'"
+                  :classes="'input--sm'"
+                ></SelectInput>
+
+                <SelectInput
+                  :label="'領補換類別'"
+                  :placeholder="'請選擇'"
+                  :classes="'input--sm'"
+                ></SelectInput>
+              </div>
             </div>
           </div>
-  
+
+          <div class="line line--full"></div>
+          <!-- 雙證件影像檔 -->
+          <div class="KYCvarify__section">
+            <div class="title">
+              <h4>國民身分證</h4>
+              <p>這裡顯示說明文字</p>
+            </div>
+            <div class="content">
+              <DefaultInput
+                :label="'身分證字號'"
+                :placeholder="'身分證字號10碼'"
+                :tips="'1碼英文+9碼數字'"
+                :classes="'input--md'"
+              ></DefaultInput>
+
+              <div class="d-flex">
+                <SelectInput
+                  :label="'發證民國年'"
+                  :placeholder="'請選擇民國年'"
+                  :classes="'input--xs'"
+                ></SelectInput>
+
+                <SelectInput
+                  :label="'月份'"
+                  :placeholder="'請選擇月份'"
+                  :classes="'input--xs'"
+                ></SelectInput>
+
+                <SelectInput
+                  :label="'日期'"
+                  :placeholder="'請選擇日期'"
+                  :classes="'input--xs'"
+                ></SelectInput>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -97,9 +144,10 @@
 import Progressbar from '../../components/progressbar/Progressbar.vue'
 import DefaultInput from '../../components/input/defaultInput.vue'
 import DatePickerInput from '../../components/input/datepickerInput.vue'
+import SelectInput from '../../components/input/selectInput.vue'
 import { defineComponent, ref } from 'vue'
 
-defineComponent({ Progressbar, DefaultInput, DatePickerInput })
+defineComponent({ Progressbar, DefaultInput, DatePickerInput, SelectInput })
 </script>
 <style lang="scss" scoped>
 @import '../../style/main.scss';
