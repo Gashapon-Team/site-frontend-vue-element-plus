@@ -3,7 +3,7 @@
     <Progressbar></Progressbar>
     <div class="KYCvarify_layout">
       <div>
-        <h3>實名認證(KYC)</h3>
+        <h3 class="mb-2">實名認證(KYC)</h3>
         <p>依據《第三方支付服務業防治洗錢及打擊資恐辦法》規定，藍新有義務進行客戶身分調查...</p>  
       </div>
       <div class="KYCvarify">
@@ -118,6 +118,7 @@ defineComponent({ Progressbar, DefaultInput, DatePickerInput })
   // height: calc(100vh - 40px);
   height: fit-content;
   box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 
   &__eara {
     padding: 16px;
@@ -127,7 +128,6 @@ defineComponent({ Progressbar, DefaultInput, DatePickerInput })
     flex-wrap: nowrap;
     padding: 16px 40px;
     // box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
     .title {
       width: 40%;
       h4 {
