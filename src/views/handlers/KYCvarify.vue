@@ -96,6 +96,7 @@
                   :classes="'input--sm'"
                 ></SelectInput>
               </div>
+
             </div>
           </div>
 
@@ -103,16 +104,21 @@
           <!-- 雙證件影像檔 -->
           <div class="KYCvarify__section">
             <div class="title">
-              <h4>國民身分證</h4>
+              <h4>雙證件影像檔</h4>
               <p>這裡顯示說明文字</p>
             </div>
             <div class="content">
-              <DefaultInput
+              <UploadInput
+              :label="'身分證字號'"
+                :placeholder="'身分證字號10碼'"
+                :tips="'1碼英文+9碼數字'"
+                :classes="'input--md'"></UploadInput>
+              <!-- <DefaultInput
                 :label="'身分證字號'"
                 :placeholder="'身分證字號10碼'"
                 :tips="'1碼英文+9碼數字'"
                 :classes="'input--md'"
-              ></DefaultInput>
+              ></DefaultInput> -->
 
               <div class="d-flex">
                 <SelectInput
@@ -135,6 +141,8 @@
               </div>
             </div>
           </div>
+          <div class="line line--full"></div>
+
         </div>
       </div>
     </div>
@@ -145,9 +153,11 @@ import Progressbar from '../../components/progressbar/Progressbar.vue'
 import DefaultInput from '../../components/input/defaultInput.vue'
 import DatePickerInput from '../../components/input/datepickerInput.vue'
 import SelectInput from '../../components/input/selectInput.vue'
+import UploadInput from '../../components/input/uploadInput.vue'
+
 import { defineComponent, ref } from 'vue'
 
-defineComponent({ Progressbar, DefaultInput, DatePickerInput, SelectInput })
+defineComponent({ Progressbar, DefaultInput, DatePickerInput, SelectInput, UploadInput })
 </script>
 <style lang="scss" scoped>
 @import '../../style/main.scss';

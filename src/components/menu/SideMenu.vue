@@ -38,7 +38,7 @@ const sidemenus = reactive([
     icon: 'Avatar',
     subItem: [
       { title: '基本資料設定', path: '/homepage/basedata' },
-      { title: '實名認證(KYC)', path: '/homepage/varifyName' },
+      { title: '實名認證(KYC)', path: '/handlers/KYCvarify' },
       { title: '商店' },
       { title: '帳戶餘額/提領' },
       { title: '發票/對帳單' },
@@ -81,6 +81,7 @@ const sidemenus = reactive([
 const router = useRouter();
 
 const changePageTo = function (thisPath) {
+  console.log('thisPath', thisPath)
   if(thisPath) router.push(thisPath)
 }
 function componentInSidemenu(ifHasSubMenu) {

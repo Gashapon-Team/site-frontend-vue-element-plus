@@ -26,11 +26,11 @@ const router = createRouter({
         {
           path: 'basedata',
           component: ()=>import('../views/baseData.vue')
-        },
-        {
-          path: 'varifyName',
-          component: ()=>import('../views/varifyName.vue')
         }
+        // {
+        //   path: 'varifyName',
+        //   component: ()=>import('../views/varifyName.vue')
+        // }
       ]
     },
     {

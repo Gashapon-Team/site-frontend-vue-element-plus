@@ -33,7 +33,7 @@
   </div>
 </template>
 <script setup>
-import KYCHandlePage from './KYCHandlePage.vue'
+import KYCHandlePage from './handlers/KYCvarify.vue'
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
