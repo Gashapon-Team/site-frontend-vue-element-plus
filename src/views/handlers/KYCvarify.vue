@@ -35,6 +35,13 @@
                     ></DefaultInput>
                 </div>
 
+                <DatePickerInput
+                  :label="'出生年月日'"
+                  :placeholder="'選擇日期'"
+                  :tips="'We\'ll never share your email with anyone else.'"
+                  :classes="'input--sm'">
+                  </DatePickerInput>
+
               </div>
 
             </div>
@@ -46,8 +53,10 @@
 <script setup>
 import Progressbar from '../../components/progressbar/Progressbar.vue';
 import DefaultInput from '../../components/input/defaultInput.vue';
+import DatePickerInput from '../../components/input/datepickerInput.vue';
 import { defineComponent, ref } from 'vue'
 
+defineComponent({ Progressbar, DefaultInput, DatePickerInput })
 
 </script>
 <style lang="scss" scoped>
