@@ -21,7 +21,7 @@
             <el-col :md="4" :xs="24" class="verifyBtn_css">
                 <el-button size="large" type="primary">
                     <Icon size="17" style="margin: 0px 10px 0px 0px;"><AdminPanelSettingsFilled /></Icon>
-                    <span>前往認證</span>
+                    <span @click="emitToggleAside">前往認證</span>
                 </el-button>
             </el-col>
         </el-row>
@@ -37,27 +37,28 @@
         </template>
         
         <div style="text-align: center;">
-            <img alt="noData" src="@/assets/noData.png" style="padding:20px; text-align: center;"/>
-            <p style="color:#606266">尚無資料</p>
+            <el-empty description="尚無認證紀錄" image-size="104"/>
         </div>
 
         <!-- 改在<el-card>設定 :body-style
         <div style="height:100%; display:flex; justify-content:center; align-items: center; flex-direction: column; flex-grow: 1;">
-            <div>
-                <img alt="noData" src="@/assets/noData.png" style="padding:20px; text-align: center;"/>
-            </div>
-            <p>尚無資料</p>
+            <el-empty description="尚無認證紀錄" image-size="104"/>
         </div> -->
 
     </el-card>
 </template>
   
 <script setup>
-import { defineProps, ref } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 import { Icon } from "@vicons/utils"; //https://xicons.org/
 import { AdminPanelSettingsFilled } from '@vicons/material'
 
+const emits = defineEmits(['toggle-aside']);
 
+const emitToggleAside = (v) => {
+    console.log(v)
+  emits('toggle-aside', false);
+}
 
 </script>
 
