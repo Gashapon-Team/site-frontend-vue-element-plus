@@ -1,7 +1,7 @@
 <template>
   <div class="custom_input">
     <div class="mb-1">{{label}}</div>
-    <el-input class="input--lg mb-1"
+    <el-input class=" mb-1"
       :class="classes"
       v-model="inputValue"
       :placeholder="placeholder"

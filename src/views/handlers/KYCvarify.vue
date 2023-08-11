@@ -16,15 +16,24 @@
                   :label="'中文姓名'"
                   :placeholder="'您的中文姓名'"
                   :tips="'We\'ll never share yourt email with anyone else.'"
-                  @customEvent="handleCustomEvent"
+                  :classes="'input--md'"
                   ></DefaultInput>
 
-                <DefaultInput
-                  :label="'中文姓名'"
-                  :placeholder="'您的中文姓名'"
-                  :tips="'We\'ll never share yourt email with anyone else.'"
-                  :class="'input--md'"
-                  ></DefaultInput>
+                <div class="d-flex">
+                  <DefaultInput
+                    :label="'英文名字'"
+                    :placeholder="'First Name'"
+                    :tips="'與護照相同的英文名字'"
+                    :classes="'input--sm mr-4'"
+                    ></DefaultInput>
+  
+                    <DefaultInput
+                    :label="'英文姓氏'"
+                    :placeholder="'First Name'"
+                    :tips="'與護照相同的英文名字'"
+                    :classes="'input--sm'"
+                    ></DefaultInput>
+                </div>
 
               </div>
 

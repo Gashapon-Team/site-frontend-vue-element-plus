@@ -49,6 +49,18 @@
 //input
 .custom_input {
     @extend .mb-4;
+    .input {
+        width: 280px;
+        &--sm {
+          width: 200px;
+        }
+        &--md {
+          width: 280px;
+        }
+        &--lg {
+          width: 320px;
+        }
+      }
     .tips {
         color: $default_color_grey;
       }

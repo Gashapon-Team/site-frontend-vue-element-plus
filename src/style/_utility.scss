@@ -1,14 +1,47 @@
-.input {
-  &--md {
-    width: 280px;
-  }
-  &--lg {
-    width: 320px;
-  }
-}
 $max: 10;
 @for $i from 1 through $max {
   .mb-#{$i} {
       margin-bottom: $i*4px;
+  }
+  .mr-#{$i} {
+    margin-right: $i*4px;
+  }
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: row;
+  &.flex-direction {
+    &--row-reverse {
+      flex-direction: row-reverse;
+    }
+    &--col {
+      flex-direction: column;
+    }
+    &--col-reverse {
+      flex-direction: column-reverse;
+    }
+  }
+  &.justify-content {
+    &--center {
+      justify-content: center;
+    }
+    &--space-between {
+      justify-content: space-between;
+    }
+    &--space-around {
+      justify-content: space-around;
+    }
+  }
+  &.align-items {
+    &--center {
+      align-items: center;
+    }
+    &--space-between {
+      align-items: space-between;
+    }
+    &--space-around {
+      align-items: space-around;
+    }
   }
 }
