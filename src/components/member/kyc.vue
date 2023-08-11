@@ -21,7 +21,7 @@
             <el-col :md="4" :xs="24" class="verifyBtn_css">
                 <el-button size="large" type="primary">
                     <Icon size="17" style="margin: 0px 10px 0px 0px;"><AdminPanelSettingsFilled /></Icon>
-                    <span @click="emitToggleAside">前往認證</span>
+                    <span>前往認證</span>
                 </el-button>
             </el-col>
         </el-row>
@@ -49,16 +49,10 @@
 </template>
   
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+
 import { Icon } from "@vicons/utils"; //https://xicons.org/
 import { AdminPanelSettingsFilled } from '@vicons/material'
 
-const emits = defineEmits(['toggle-aside']);
-
-const emitToggleAside = (v) => {
-    console.log(v)
-  emits('toggle-aside', false);
-}
 
 </script>
 
