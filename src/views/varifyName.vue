@@ -45,7 +45,7 @@ function startVarify(){
 </script>
 
 <style lang="scss" scope>
-$border_color: #f0f1f1;
+@import '../style/main.scss';
 #varify_name {
   padding: 16px;
   .varify_section {

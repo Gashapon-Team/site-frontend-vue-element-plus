@@ -1,0 +1,10 @@
+.line {
+  width: calc(100% + 30px);
+  transform: translateX(-16px);
+  height: 1px;
+  background: $border_color;
+  &.line--full {
+    width: calc(100% - 30px);
+    transform: translateX(15px);
+  }
+}
