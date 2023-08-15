@@ -71,3 +71,9 @@
         color: $default_color_grey;
       }
 }
+.file-preview {
+    width: 420px;
+    height: 220px;
+    overflow: hidden;
+    object-fit: contain;
+}
