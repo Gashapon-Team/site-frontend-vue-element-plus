@@ -4,7 +4,12 @@
 
     <div class="upload_container">
 
-      <el-icon v-if="fileContent" class="upload_container__close_icon"><CircleCloseFilled /></el-icon>
+      <el-icon 
+          v-if="fileContent"
+          class="upload_container__close_icon"
+          @click="removePreview">
+            <CircleCloseFilled />
+      </el-icon>
       <el-upload
         class="upload-demo"
         :class="fileContent?'active':''"
@@ -15,6 +20,8 @@
         :on-preview="handlePreview"
         :limit="1"
         :on-exceed="handleExceed"
+        :file-list="fileList"
+        :on-success="handleSuccess"
       >
         <el-icon class="el-icon--upload"><upload-filled /></el-icon>
         <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
@@ -51,6 +58,7 @@ const props = defineProps({
 })
 
 const fileContent = ref('')
+const fileList = ref([])
 
 function handleImport(file) {
   let reader = new FileReader()
@@ -59,6 +67,23 @@ function handleImport(file) {
     fileContent.value = e.target.result
   }
 }
+function removePreview(){
+  fileContent.value = '';
+  console.log('fileList', fileList)
+}
+function handleSuccess(response, file, fileList){
+  // 上傳成功後的處理
+  console.log('response', response)
+  console.log('file'. file);
+  console.log('fileList', fileList)
+};
+const handleRemove = (file, fileList) => {
+  // 移除已上傳的檔案
+  const index = fileList.indexOf(file);
+  if (index !== -1) {
+    fileList.splice(index, 1);
+  }
+};
 </script>
 
 <style lang="scss" scoped>
