@@ -1,7 +1,7 @@
 <template>
     <div class="main_footer">
-        <div class="main_footer_left">© 2018 Neweb Technologies Co., Ltd.</div>
-        <div class="main_footer_right">客服專線 02-2655-1775｜cs@newebpay.com｜服務時間24小時</div>
+        <div>© 2018 Neweb Technologies Co., Ltd.</div>
+        <div>客服專線 02-2655-1775｜cs@newebpay.com｜服務時間24小時</div>
     </div>
 </template>
 
@@ -9,13 +9,16 @@
 </script>
 
 <style scoped lang="scss">
-$text: #606266;
+$text: #666;
 
 .main_footer {
+    height: $footer-height;
+    background-color: #FFF;
+    box-shadow: $header-footer-box-shadow;
+    padding: 0px 40px;
+    color: $text;
     display: flex;
     justify-content: space-between;
-
     align-items: center;
-    color: $text;
 }
 </style>
