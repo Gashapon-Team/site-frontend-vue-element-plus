@@ -53,8 +53,7 @@ let contentPage = shallowRef(KYC);
 }
 
 .el-main {
-  // background-color: #F9F9F9;
-  background-color: #E5E7EB;
+  background: #F9FAFB;
   min-height: calc(100vh - $header-height - $footer-height);
   padding: 24px 40px;
 }
