@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
 $text:#606266;
 $blue:#07229a;
+$mainBgc: #E5E7EB;
 
 // DemoView layout
 $aside-width: 272px;
@@ -38,18 +39,20 @@ h4 {
     height: 100%;
 }
 
-.el-tabs__item{
-    font-weight:500 !important;
-    font-size:18px !important;
 
-    &:hover{
-        color:$blue;
-    }
 
-    &.is-active{
-        color:$blue;
-    }
-}
+// .el-tabs__item{
+//     // font-weight:500 !important;
+//     // font-size:18px !important;
+
+//     &:hover{
+//         color:$blue;
+//     }
+
+//     &.is-active{
+//         color:$blue;
+//     }
+// }
 
 .el-tabs__active-bar{
     color:$blue;

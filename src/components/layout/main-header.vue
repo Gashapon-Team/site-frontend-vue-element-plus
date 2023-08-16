@@ -54,7 +54,8 @@ const timerCount = setInterval(() => {
     justify-content: flex-end;
     align-items: center;
     z-index: 999;
-    width: calc(100% - $aside-width);
+    width: inherit;
+    // width: calc(100% - $aside-width);
     background: #FFFFFF;
     height: $header-height;
     box-shadow: $header-footer-box-shadow;
