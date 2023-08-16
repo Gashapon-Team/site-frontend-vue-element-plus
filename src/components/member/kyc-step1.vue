@@ -177,7 +177,7 @@ const handleTabClick = (tab) => {
             });
             break;
         case "國民身分證":
-            nextTick(() => { b
+            nextTick(() => {
                 idCardRef.value.scrollIntoView({ behavior: 'smooth', block: "start", inline: "nearest" });
             });
             break;
