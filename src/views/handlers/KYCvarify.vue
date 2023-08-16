@@ -140,7 +140,7 @@
 
         </div>
       </div>
-      <el-row class="mb-4">
+      <el-row class="my-4 d-flex justify-content--center">
         <el-button type="primary" plain>Primary</el-button>
         <el-button type="primary">Primary</el-button>
       </el-row>

@@ -6,6 +6,13 @@ $max: 10;
   .mr-#{$i} {
     margin-right: $i*4px;
   }
+  .mt-#{$i} {
+    margin-top: $i*4px;
+  }
+  .my-#{$i} {
+    margin-top: $i*4px;
+    margin-bottom: $i*4px;
+  }
 }
 
 .d-flex {
