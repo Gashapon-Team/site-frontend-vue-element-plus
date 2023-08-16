@@ -141,8 +141,8 @@
         </div>
       </div>
       <el-row class="my-4 d-flex justify-content--center">
-        <el-button type="primary" plain>Primary</el-button>
-        <el-button type="primary">Primary</el-button>
+        <el-button @click="returnToVarifyName" type="primary" plain>返回</el-button>
+        <el-button type="primary">下一步</el-button>
       </el-row>
     </div>
   </div>
@@ -155,6 +155,7 @@ import SelectInput from '../../components/input/selectInput.vue'
 import UploadInput from '../../components/input/uploadInput.vue'
 
 import { defineComponent, reactive } from 'vue'
+import { useRouter } from 'vue-router';
 
 const file_id_card=reactive({
   file_data: {},
@@ -168,6 +169,7 @@ const file_health_card=reactive({
   file_data: {},
   file: ''
 })
+const rounter = useRouter()
 
 defineComponent({ Progressbar, DefaultCustomInput, DatePickerInput, SelectInput, UploadInput })
 
@@ -182,6 +184,9 @@ function getIDBackCardFile(file_data, file){
 function getHealthCardFileList(file_data, file){
   file_health_card.file_data=file_data
   file_health_card.file=file
+}
+function returnToVarifyName(){
+  rounter.push('/homepage/varifyName')
 }
 
 </script>
