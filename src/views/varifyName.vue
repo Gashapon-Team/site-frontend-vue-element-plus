@@ -23,20 +23,48 @@
     <div class="varify_section varify_history">
         <h3 class="title">修改歷程</h3>
         <div class="line"></div>
-        <div class="content">
-          <div class="no_data_text">尚無資料</div>
+        <div class="content px-8">
+          <div v-if="false" class="no_data_text">尚無資料</div>
+          <el-table v-else :data="tableData" stripe style="width: 100%">
+            <el-table-column prop="date" label="Date" width="180" />
+            <el-table-column prop="name" label="Name" width="180" />
+            <el-table-column prop="address" label="Address" />
+          </el-table>
         </div>
     </div>
 
   </div>
 </template>
 <script setup>
+import {reactive} from 'vue'
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+const tableData = reactive([
+  {
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+  {
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles',
+  },
+])
+
 function startVarify(){
   router.push('/handlers/KYCvarify')
-
 }
 
 </script>

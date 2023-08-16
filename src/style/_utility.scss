@@ -1,17 +1,31 @@
 $max: 10;
+$m: 'margin';
+$p: 'padding';
 @for $i from 1 through $max {
-  .mb-#{$i} {
-      margin-bottom: $i*4px;
+  .m {
+    &b-#{$i} {
+        #{$m}-bottom: $i*4px;
+    }
+    &r-#{$i} {
+      #{$m}-right: $i*4px;
+    }
+    &t-#{$i} {
+      #{$m}-top: $i*4px;
+    }
+    &y-#{$i} {
+      #{$m}-top: $i*4px;
+      #{$m}-bottom: $i*4px;
+    }
   }
-  .mr-#{$i} {
-    margin-right: $i*4px;
-  }
-  .mt-#{$i} {
-    margin-top: $i*4px;
-  }
-  .my-#{$i} {
-    margin-top: $i*4px;
-    margin-bottom: $i*4px;
+  .p{
+    &x-#{$i}{
+      #{$p}-left: $i*4px;
+      #{$p}-right: $i*4px;
+    }
+    &y-#{$i}{
+      #{$p}-top: $i*4px;
+      #{$p}-bottom: $i*4px;
+    }
   }
 }
 
