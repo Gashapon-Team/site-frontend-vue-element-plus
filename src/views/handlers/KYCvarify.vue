@@ -15,27 +15,27 @@
               <p>這裡顯示說明文字</p>
             </div>
             <div class="content">
-              <DefaultInput
+              <DefaultCustomInput
                 :label="'中文姓名'"
                 :placeholder="'您的中文姓名'"
                 :tips="'We\'ll never share yourt email with anyone else.'"
                 :classes="'input--md'"
-              ></DefaultInput>
+              ></DefaultCustomInput>
 
               <div class="d-flex">
-                <DefaultInput
+                <DefaultCustomInput
                   :label="'英文名字'"
                   :placeholder="'First Name'"
                   :tips="'與護照相同的英文名字'"
                   :classes="'input--sm mr-4'"
-                ></DefaultInput>
+                ></DefaultCustomInput>
 
-                <DefaultInput
+                <DefaultCustomInput
                   :label="'英文姓氏'"
                   :placeholder="'First Name'"
                   :tips="'與護照相同的英文名字'"
                   :classes="'input--sm'"
-                ></DefaultInput>
+                ></DefaultCustomInput>
               </div>
 
               <DatePickerInput
@@ -56,12 +56,12 @@
               <p>這裡顯示說明文字</p>
             </div>
             <div class="content">
-              <DefaultInput
+              <DefaultCustomInput
                 :label="'身分證字號'"
                 :placeholder="'身分證字號10碼'"
                 :tips="'1碼英文+9碼數字'"
                 :classes="'input--md'"
-              ></DefaultInput>
+              ></DefaultCustomInput>
 
               <div class="d-flex">
                 <SelectInput
@@ -109,55 +109,81 @@
             </div>
             <div class="content">
               <UploadInput
-              :label="'身分證字號'"
-                :placeholder="'身分證字號10碼'"
-                :tips="'1碼英文+9碼數字'"
-                :classes="'input--md'"></UploadInput>
-              <!-- <DefaultInput
-                :label="'身分證字號'"
-                :placeholder="'身分證字號10碼'"
-                :tips="'1碼英文+9碼數字'"
-                :classes="'input--md'"
-              ></DefaultInput> -->
-
-              <div class="d-flex">
-                <SelectInput
-                  :label="'發證民國年'"
-                  :placeholder="'請選擇民國年'"
-                  :classes="'input--xs'"
-                ></SelectInput>
-
-                <SelectInput
-                  :label="'月份'"
-                  :placeholder="'請選擇月份'"
-                  :classes="'input--xs'"
-                ></SelectInput>
-
-                <SelectInput
-                  :label="'日期'"
-                  :placeholder="'請選擇日期'"
-                  :classes="'input--xs'"
-                ></SelectInput>
-              </div>
+                :label="'國民身分證(正面)'"
+                :tips="'限JPG、JPEG、PNG檔案格式，檔案大小須小於5MB'"
+                :classes="'mb-8'"
+                :placeholder="'將檔案拖曳到此處，或點擊上傳'"
+                :alert="'請至少上傳1張圖片'"
+                @getFileList="getIDCardFile"
+                >
+              </UploadInput>
+              <UploadInput
+                :label="'國民身分證(反面)'"
+                :tips="'限JPG、JPEG、PNG檔案格式，檔案大小須小於5MB'"
+                :classes="'mb-8'"
+                :placeholder="'將檔案拖曳到此處，或點擊上傳'"
+                :alert="'請至少上傳1張圖片'"
+                @getFileList="getIDBackCardFile"
+                >
+              </UploadInput>
+              <UploadInput
+                :label="'健保卡(正面)'"
+                :tips="'限JPG、JPEG、PNG檔案格式，檔案大小須小於5MB'"
+                :classes="'mb-8'"
+                :placeholder="'將檔案拖曳到此處，或點擊上傳'"
+                :alert="'請至少上傳1張圖片'"
+                @getFileList="getHealthCardFileList"
+                >
+              </UploadInput>
             </div>
           </div>
-          <div class="line line--full"></div>
 
         </div>
       </div>
+      <el-row class="mb-4">
+        <el-button type="primary" plain>Primary</el-button>
+        <el-button type="primary">Primary</el-button>
+      </el-row>
     </div>
   </div>
 </template>
 <script setup>
 import Progressbar from '../../components/progressbar/Progressbar.vue'
-import DefaultInput from '../../components/input/defaultInput.vue'
+import DefaultCustomInput from '../../components/input/defaultCustomInput.vue'
 import DatePickerInput from '../../components/input/datepickerInput.vue'
 import SelectInput from '../../components/input/selectInput.vue'
 import UploadInput from '../../components/input/uploadInput.vue'
 
-import { defineComponent, ref } from 'vue'
+import { defineComponent, reactive } from 'vue'
 
-defineComponent({ Progressbar, DefaultInput, DatePickerInput, SelectInput, UploadInput })
+const file_id_card=reactive({
+  file_data: {},
+  file: ''
+})
+const file_id_card_back=reactive({
+  file_data: {},
+  file: ''
+})
+const file_health_card=reactive({
+  file_data: {},
+  file: ''
+})
+
+defineComponent({ Progressbar, DefaultCustomInput, DatePickerInput, SelectInput, UploadInput })
+
+function getIDCardFile(file_data, file){
+  file_id_card.file_data=file_data
+  file_id_card.file=file
+}
+function getIDBackCardFile(file_data, file){
+  file_id_card_back.file_data=file_data
+  file_id_card_back.file=file
+}
+function getHealthCardFileList(file_data, file){
+  file_health_card.file_data=file_data
+  file_health_card.file=file
+}
+
 </script>
 <style lang="scss" scoped>
 @import '../../style/main.scss';

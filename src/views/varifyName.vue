@@ -28,12 +28,9 @@
         </div>
     </div>
 
-    <KYCHandlePage/>
-
   </div>
 </template>
 <script setup>
-import KYCHandlePage from './handlers/KYCvarify.vue'
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

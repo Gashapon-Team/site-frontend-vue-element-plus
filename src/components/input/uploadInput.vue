@@ -1,5 +1,5 @@
 <template>
-  <div class="custom_upload_input">
+  <div class="custom_upload_input" :class="classes">
     <div class="mb-1">{{ label }}</div>
 
     <div class="upload_container">
@@ -22,9 +22,10 @@
         v-model="fileList"
         >
         <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-        <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
+        <div class="el-upload__text"> {{placeholder}}</div>
         <template #tip>
-          <div class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+          <div class="el-upload__tip alert">{{ alert }}</div>
+          <div class="el-upload__tip tips">{{ tips }}</div>
         </template>
       </el-upload>
       <img v-if="fileContent" :src="fileContent" alt="Preview Uploaded Image" class="file-preview" />
@@ -34,7 +35,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from 'vue'
+import { defineProps, defineEmits, ref } from 'vue'
 import { UploadFilled } from '@element-plus/icons-vue'
 const props = defineProps({
   label: {
@@ -52,11 +53,20 @@ const props = defineProps({
   classes: {
     type: String,
     default: ''
+  },
+  alert: {
+    type: String,
+    default: ''
+  },
+  variable_name: {
+    type: String,
+    default: 'file'
   }
 })
 
 const fileContent = ref('')
 const fileList = ref([])
+const emit = defineEmits(['getFileList'])
 
 function handleImport(file, fileList) {
   // console.log('handleImprt', 'file', file, 'fileList', fileList)
@@ -64,26 +74,13 @@ function handleImport(file, fileList) {
   reader.readAsDataURL(file.raw)
   reader.onloadend = async function (e) {
     fileContent.value = e.target.result
-    // console.log('fileList.value', fileList)
+    emit('getFileList','file_id_card',file,  e.target.result)
   }
 }
 function removePreview(){
   fileContent.value = '';
 }
 
-// function handleSuccess(response, file, fileList){
-//   // 上傳成功後的處理
-//   console.log('response', response)
-//   console.log('file'. file);
-//   console.log('fileList', fileList)
-// };
-// const handleRemove = (file, fileList) => {
-//   // 移除已上傳的檔案
-//   const index = fileList.indexOf(file);
-//   if (index !== -1) {
-//     fileList.splice(index, 1);
-//   }
-// };
 </script>
 
 <style lang="scss" scoped>
@@ -109,6 +106,14 @@ function removePreview(){
           border-radius: 999px;
           background: white;
         }
+    }
+    .tips {
+        font-size: 14px;
+        color: $default_color_grey;
+      }
+    .alert {
+      font-size: 14px;
+      color: $alert_color;
     }
 }
 </style>
