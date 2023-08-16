@@ -14,18 +14,16 @@
         class="upload-demo"
         :class="fileContent?'active':''"
         drag
-        action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-        multiple
         :on-change="handleImport"
-        :on-preview="handlePreview"
         :limit="1"
-        :on-exceed="handleExceed"
+        :show-file-list="true"
+        :list-type="'picture'"
         :file-list="fileList"
-        :on-success="handleSuccess"
-      >
+        v-model="fileList"
+        >
         <el-icon class="el-icon--upload"><upload-filled /></el-icon>
         <div class="el-upload__text">Drop file here or <em>click to upload</em></div>
-        <template>
+        <template #tip>
           <div class="el-upload__tip">jpg/png files with a size less than 500kb</div>
         </template>
       </el-upload>
@@ -60,30 +58,32 @@ const props = defineProps({
 const fileContent = ref('')
 const fileList = ref([])
 
-function handleImport(file) {
+function handleImport(file, fileList) {
+  // console.log('handleImprt', 'file', file, 'fileList', fileList)
   let reader = new FileReader()
   reader.readAsDataURL(file.raw)
   reader.onloadend = async function (e) {
     fileContent.value = e.target.result
+    // console.log('fileList.value', fileList)
   }
 }
 function removePreview(){
   fileContent.value = '';
-  console.log('fileList', fileList)
 }
-function handleSuccess(response, file, fileList){
-  // 上傳成功後的處理
-  console.log('response', response)
-  console.log('file'. file);
-  console.log('fileList', fileList)
-};
-const handleRemove = (file, fileList) => {
-  // 移除已上傳的檔案
-  const index = fileList.indexOf(file);
-  if (index !== -1) {
-    fileList.splice(index, 1);
-  }
-};
+
+// function handleSuccess(response, file, fileList){
+//   // 上傳成功後的處理
+//   console.log('response', response)
+//   console.log('file'. file);
+//   console.log('fileList', fileList)
+// };
+// const handleRemove = (file, fileList) => {
+//   // 移除已上傳的檔案
+//   const index = fileList.indexOf(file);
+//   if (index !== -1) {
+//     fileList.splice(index, 1);
+//   }
+// };
 </script>
 
 <style lang="scss" scoped>
