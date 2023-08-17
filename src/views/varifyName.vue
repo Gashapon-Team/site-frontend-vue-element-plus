@@ -7,7 +7,26 @@
         <div class="varify_status__left__show_status">
           <div class="sction_left">
             <div class="sction__title">審核狀態</div>
-            <div class="sction__status sction__status--gray">尚未認證</div>
+            <div class="sction__status sction__status--gray">
+              <el-tag
+                v-if="varify_statues === 0"
+                type="info"
+                class="mx-1"
+                effect="dark"
+              >尚未認證</el-tag>
+              <el-tag
+                v-else-if="varify_statues === 1"
+                type="success"
+                class="mx-1"
+                effect="light"
+              >通過</el-tag>
+              <el-tag
+                v-else-if="varify_statues === 2"
+                type="danger"
+                class="mx-1"
+                effect="light"
+              >未通過</el-tag>
+            </div>
           </div>
           <div class="sction_right">
             <div class="sction__title">審核描述</div>
@@ -16,7 +35,17 @@
         </div>
       </div>
       <div class="varify_status__right">
-        <el-button class="varify_status__varify_btn" @click="startVarify" type="primary"><el-icon style="margin-right: 4px;"><CircleCheck /></el-icon>前往認證</el-button>
+        <el-button class="varify_status__varify_btn"
+          @click="varifyHandler"
+          type="primary"
+          :plain="varify_statues!==0">
+          <el-icon style="margin-right: 4px;">
+            <CircleCheck />
+          </el-icon>
+          <span v-if="varify_statues===0">前往認證</span>
+          <span v-else-if="varify_statues===1">異動申請</span>
+          <span v-else-if="varify_statues===2">前往補件</span>
+        </el-button>
       </div>
     </div>
 
@@ -49,7 +78,7 @@
   </div>
 </template>
 <script setup>
-import {reactive} from 'vue'
+import {reactive, ref} from 'vue'
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -127,9 +156,23 @@ const tableData = reactive([
     id:8
   },
 ])
+const varify_statues = ref(0) // 0　尚未　１通過　２未通過
 
-function startVarify(){
-  router.push('/handlers/KYCvarify')
+function varifyHandler(){
+  switch(varify_statues){
+    case 0:
+      router.push('/handlers/KYCvarify')
+      break;
+    case 1:
+      router.push('/handlers/KYCvarify')
+      break;
+    case 2:
+      router.push('/handlers/KYCvarify')
+      break;
+    default:
+      router.push('/handlers/KYCvarify')
+      break;
+  }
 }
 
 </script>
@@ -167,15 +210,10 @@ function startVarify(){
       display: flex;
       font-size: 14px;
       div {
-        padding: 4px;
+        padding: 10px;
       }
       .sction__title {
         color: #c1c5cd;
-      }
-      .sction__status--gray {
-        background: #e5e7eb;
-        border-radius: 4px;
-        padding: 4px 8px;
       }
     }
     &__varify_btn {
