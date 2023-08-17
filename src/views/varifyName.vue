@@ -23,12 +23,25 @@
     <div class="varify_section varify_history">
         <h3 class="title">修改歷程</h3>
         <div class="line"></div>
-        <div class="content px-8">
+        <div class="content p-8 ">
           <div v-if="false" class="no_data_text">尚無資料</div>
-          <el-table v-else :data="tableData" stripe style="width: 100%">
-            <el-table-column prop="date" label="Date" width="180" />
-            <el-table-column prop="name" label="Name" width="180" />
-            <el-table-column prop="address" label="Address" />
+          <el-table class="varify_history__content" v-else :data="tableData" stripe style="width: 100%">
+            <el-table-column prop="item" label="項目" width="180" />
+            <el-table-column prop="name" label="申請者" width="180" />
+            <el-table-column prop="changeDay" label="異動日期" />
+            <el-table-column prop="reviewDay" label="審核日期" />
+            <el-table-column prop="status" label="狀態">
+              <template #default="scope">
+                <el-tag
+                  :type="scope.row.status"
+                  class="mx-1"
+                  effect="dark"
+                >
+                  {{ scope.row.status }}
+              </el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column prop="describe" label="審核描述"/>
           </el-table>
         </div>
     </div>
@@ -42,24 +55,76 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const tableData = reactive([
   {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    item: '首次認證',
+    name: '平台商ID',
+    changeDay: '2016-05-03 10:00:00',
+    reviewDay: '2023-01-01 10:00:00',
+    status: 'success',
+    describe: '已完成實名制認證',
+    id:1
   },
   {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    item: '首次認證',
+    name: '平台商ID',
+    changeDay: '2016-05-03 10:00:00',
+    reviewDay: '2023-01-01 10:00:00',
+    status: 'danger',
+    describe: '認證失敗',
+    id:2
   },
   {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    item: '首次認證',
+    name: '平台商ID',
+    changeDay: '2016-05-03 10:00:00',
+    reviewDay: '2023-01-01 10:00:00',
+    status: 'success',
+    describe: '已完成實名制認證',
+    id:3
   },
   {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
+    item: '首次認證',
+    name: '平台商ID',
+    changeDay: '2016-05-03 10:00:00',
+    reviewDay: '2023-01-01 10:00:00',
+    status: 'success',
+    describe: '已完成實名制認證',
+    id:4
+  },
+  {
+    item: '首次認證',
+    name: '平台商ID',
+    changeDay: '2016-05-03 10:00:00',
+    reviewDay: '2023-01-01 10:00:00',
+    status: 'success',
+    describe: '已完成實名制認證',
+    id:5
+  },
+  {
+    item: '首次認證',
+    name: '平台商ID',
+    changeDay: '2016-05-03 10:00:00',
+    reviewDay: '2023-01-01 10:00:00',
+    status: 'danger',
+    describe: '認證失敗',
+    id:6
+  },
+  {
+    item: '首次認證',
+    name: '平台商ID',
+    changeDay: '2016-05-03 10:00:00',
+    reviewDay: '2023-01-01 10:00:00',
+    status: 'success',
+    describe: '已完成實名制認證',
+    id:7
+  },
+  {
+    item: '首次認證',
+    name: '平台商ID',
+    changeDay: '2016-05-03 10:00:00',
+    reviewDay: '2023-01-01 10:00:00',
+    status: 'danger',
+    describe: '認證失敗',
+    id:8
   },
 ])
 
@@ -134,6 +199,11 @@ function startVarify(){
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
+    }
+    .varify_history__content {  
+      overflow-y: scroll;
+      height: 100%;
     }
   }
 
