@@ -95,9 +95,12 @@
                             </el-row>
                             <el-row>
                                 <el-form-item label="發證地點" prop="id_place">
-                                    <el-select v-model="kycStep1Data.id_place" placeholder="請選擇" style="width:100%;">
-                                    </el-select>
+                                    <selectTWzip
+                                        v-model="kycStep1Data.id_place"
+                                        @twZipCode="(v)=> kycStep1Data.id_place = v"
+                                    ></selectTWzip>
                                 </el-form-item>
+                                
                                 <el-form-item label="領補換類別" prop="id_apply_type">
                                     <el-select v-model="kycStep1Data.id_apply_type" placeholder="請選擇" style="width:100%;">
                                         <el-option label="初發" value="1" />
@@ -141,6 +144,8 @@
 <script setup>
 
 import { reactive, ref, shallowRef, onMounted, nextTick } from 'vue'
+import selectTWzip from '../form/selectTWzip.vue'
+
 
 
 
