@@ -85,12 +85,21 @@
                             <el-row>
                                 <el-form-item label="發證民國年月日" prop="id_date">
                                     <el-date-picker
+                                        class="id_date_class"
                                         v-model="kycStep1Data.id_date"
                                         type="date"
                                         label="日期"
                                         placeholder="請選擇發證民國年月日"
                                         style="width: 100%"
+                                        format="YYYY/MM/DD"
+                                        value-format="YYYY-MM-DD"
                                     />
+                                        <!-- <template #default="syesr">
+                                            <div class="">
+                                                <span class="syesr">{{ syesr }}</span>
+                                            </div>
+                                        </template> -->
+                                    <!-- </el-date-picker> -->
                                 </el-form-item>
                             </el-row>
                             <el-row>
@@ -121,7 +130,66 @@
                                 這裡是說明文字
                             </p>
                         </el-col>
+                        <el-col :lg="19" :xs="24">
+                            <el-row>
+                                <el-form-item label="國民身分證（正面）" prop="id_pic_front">
+                                    <uploadDragOnePic
+                                        v-model="kycStep1Data.id_pic_front"
+                                        @returnIdPicFront="(v)=> kycStep1Data.id_pic_front = v"
+                                        :reset-trigger="resetFlag"
+                                    />
+                                    <!-- <el-upload
+                                        ref="id_pic_front_ref"
+                                        v-model="kycStep1Data.id_pic_front"
+                                        list-type="picture-card"
+                                        drag
+                                        
+                                        action="#"
+                                        :auto-upload="false"
+                                       
+                                        :limit="1"
+                                        :on-exceed="idPicFrontExceed"
+                                        :on-change="idPicFrontVerify"
+                                        
+                                        :on-preview="idPicFrontPreview"
+                                        :on-remove="idPicFrontRemove"
+                                    >
 
+                                            <el-icon class="el-icon--upload"><UploadFilled /></el-icon>
+                                            <div class="el-upload__text">
+                                                將檔案拖到此處，或 <em>點擊上傳</em>
+                                            </div>
+         
+                                        <template #tip>
+                                            <div class="el-upload__tip">
+                                                限JPG、JPEG、PNG檔案格式，檔案大小須小於5MB
+                                            </div>
+                                        </template>
+                                    </el-upload>
+                                    <el-dialog v-model="dialogVisible">
+                                        <img style="width:100%;" :src="dialogImageUrl" alt="Preview Image" />
+                                    </el-dialog> -->
+                                </el-form-item>
+                            </el-row>
+                            <el-row>
+                                <el-form-item label="國民身分證（反面）" prop="id_pic_back">
+                                    <uploadDragOnePic
+                                        v-model="kycStep1Data.id_pic_back"
+                                        @returnIdPicFront="(v)=> kycStep1Data.id_pic_back = v"
+                                        :reset-trigger="resetFlag"
+                                    />
+                                </el-form-item>
+                            </el-row>
+                            <el-row>
+                                <el-form-item label="健保卡（正面）" prop="health_id_pic">
+                                    <uploadDragOnePic
+                                        v-model="kycStep1Data.health_id_pic"
+                                        @returnIdPicFront="(v)=> kycStep1Data.health_id_pic = v"
+                                        :reset-trigger="resetFlag"
+                                    />
+                                </el-form-item>
+                            </el-row>
+                        </el-col>
 
                     </el-row>
 
@@ -144,9 +212,68 @@
 <script setup>
 
 import { reactive, ref, shallowRef, onMounted, nextTick } from 'vue'
+import { UploadFilled } from '@element-plus/icons-vue'
+// import { ElMessage, genFileId } from 'element-plus'
 import selectTWzip from '../form/selectTWzip.vue'
+import uploadDragOnePic from '../form/uploadDragOnePic.vue'
 
 
+// // =============圖檔上傳=============
+// // 圖片上傳成功
+// // const imageUrl = ref('')
+// const idPicFrontSuccess = (uploadFile) => {
+//     console.log('idPicFrontSuccess',uploadFile)
+//     console.log('URL.createObjectURL(uploadFile)',URL.createObjectURL(uploadFile))
+
+// //   imageUrl.value = URL.createObjectURL(uploadFile)
+//   kycStep1Data.id_pic_front = URL.createObjectURL(uploadFile)
+//   console.log(kycStep1Data.id_pic_front)
+// }
+
+// // 圖片驗證
+// const idPicFrontVerify= (rawFile) => {
+//     // console.log('idPicFrontVerify',rawFile)
+//   if (rawFile.raw.type !== 'image/jpeg' && rawFile.raw.type !== 'image/png') {
+//     ElMessage.error('限JPG、JPEG、PNG檔案格式!')
+//     id_pic_front_ref.value.clearFiles() //clear preview pic
+//     kycStep1Data.id_pic_front = ''
+//     return false
+//   } else if (rawFile.raw.size / 1024 / 1024 > 5) {
+//     ElMessage.error('檔案大小須小於5MB!')
+//     id_pic_front_ref.value.clearFiles()
+//     kycStep1Data.id_pic_front = ''
+//     return false
+//   }
+
+//   idPicFrontSuccess(rawFile.raw)
+//   return true
+// }
+
+// // 圖檔更換 (limit 1)
+// const id_pic_front_ref = ref(null)
+// const idPicFrontExceed = (files) => {
+//     // console.log(files)
+//   id_pic_front_ref.value.clearFiles()
+//   const file = files[0]
+//   file.uid = genFileId()
+//   id_pic_front_ref.value.handleStart(file)
+// //   console.log(id_pic_front_ref)
+//   idPicFrontSuccess(file)
+// }
+
+// // 圖檔預覽
+// const dialogImageUrl = ref('')
+// const dialogVisible = ref(false)
+// const idPicFrontPreview = (file) => {
+//     dialogImageUrl.value = file.url
+//     dialogVisible.value = true
+// }
+// // 移除圖檔
+// const idPicFrontRemove = (file) => {
+//   console.log('idPicFrontRemove',file)
+//   kycStep1Data.id_pic_front = ''
+//   id_pic_front_ref.resetFields()
+// }
 
 
 
@@ -167,6 +294,7 @@ onMounted(() => {
             tabPosition.value = 'right';
         }
     });
+
 });
 
 // tab scroll into view
@@ -203,7 +331,11 @@ const kycStep1Data = reactive({
   id_number: '',
   id_date: '',
   id_place: '',
-  id_apply_type: ''
+  id_apply_type: '',
+
+  id_pic_front: '',
+  id_pic_back: '',
+  health_id_pic: ''
 })
 
 const rules = reactive({
@@ -235,7 +367,7 @@ const rules = reactive({
     {
       type: 'date',
       required: true,
-      message: '請選發證擇日期',
+      message: '請選擇發證日期',
       trigger: 'change',
     },
   ],
@@ -252,10 +384,32 @@ const rules = reactive({
       message: '請選擇領補換類別',
       trigger: 'change',
     },
-  ]
+  ],
+  id_pic_front:[
+  {
+      required: true,
+      message: '請上傳國民身分證（正面）圖檔',
+      trigger: 'change',
+    }
+  ],
+  id_pic_back:[
+  {
+      required: true,
+      message: '請上傳國民身分證（反面）圖檔',
+      trigger: 'change',
+    }
+  ],
+  health_id_pic:[
+  {
+      required: true,
+      message: '請上傳健保卡（正面）圖檔',
+      trigger: 'change',
+    }
+  ],
 })
 
 const submitForm = async (formEl) => {
+    console.log('submitForm formEl',formEl)
     console.log(kycStep1Data)
   if (!formEl) return
   await formEl.validate((valid, fields) => {
@@ -267,10 +421,20 @@ const submitForm = async (formEl) => {
   })
 }
 
-const resetForm = (formEl) => {
+let resetFlag = ref(false) //file upload reset preview
+const resetForm = async (formEl) => {
+    console.log('resetForm formEl',formEl)
   if (!formEl) return
-  formEl.resetFields()
+    formEl.resetFields()
+
+    kycStep1Data.id_pic_front = '' //clear all model
+
+    resetFlag.value = true //clear preview file
+    await nextTick() 
+    resetFlag.value = false
 }
+
+
 
 </script>
 
@@ -293,10 +457,22 @@ const resetForm = (formEl) => {
 }
 
 
-
-div.el-upload.el-upload--picture-card.is-drag {
-    --el-upload-picture-card-size : 300px;
+:deep(.el-form-item__label) {
+    font-weight: 900;
 }
+
+
+//.el-upload file
+// $kycUploadPicWidth: 300px;
+// :deep(.el-upload-list--picture-card) {  //preview
+//     --el-upload-list-picture-card-size: $kycUploadPicWidth;
+// }
+// :deep(.el-upload--picture-card) {  //upload
+//     --el-upload-picture-card-size : $kycUploadPicWidth;
+// }
+// :deep(.el-upload-list--picture-card .el-upload-list__item) {
+//     border: none;
+// }
 
 
 @media (max-width: 768px) {
