@@ -97,7 +97,7 @@ const idPicFrontVerify= (rawFile) => {
         uploadValue = ''
         return false
     }
-
+    emit('returnIdPicFront', uploadValue)
     idPicFrontSuccess(rawFile.raw)
     return true
 }
@@ -125,6 +125,7 @@ const idPicFrontRemove = (file) => {
     console.log('idPicFrontRemove',file)
     console.log('idPicFrontRemove pic_ref',pic_ref)
     uploadValue = ''
+    emit('returnIdPicFront', uploadValue)
     pic_ref.value.clearFiles() //clear preview file
 }
 
