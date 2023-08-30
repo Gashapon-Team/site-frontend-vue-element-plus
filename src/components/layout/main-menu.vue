@@ -2,7 +2,7 @@
     <div class="left_menu">
         <!--logo-->
         <div>
-            <img alt="Newebpay logo" src="@/assets/NewebPay Logo.png" style="padding: 13px 20px;"/>
+            <img alt="Newebpay logo" src="@/assets/NewebPay_Logo.png" style="padding: 13px 20px;"/>
             <p style="font-size:12px; margin:13px 20px; color:#fff;">
                 會員平台管理
             </p>

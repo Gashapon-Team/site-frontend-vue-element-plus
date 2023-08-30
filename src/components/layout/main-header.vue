@@ -1,6 +1,7 @@
 <template>
     <div class="top_header">
-        <div style="margin-right:20px;">{{timer}} 秒自動登出</div>
+        <!-- <div style="margin-right:20px;">{{timer}} 秒自動登出</div> -->
+        <div style="margin-right:20px;">600 秒自動登出</div>
 
         <el-button type="primary" link>
             <Icon size="24" style="margin-right:20px;"><NotificationsNoneFilled /></Icon>
@@ -22,7 +23,7 @@
         >
             <el-sub-menu index="2">
                 <template #title>
-                    <p style="color:#3B82F6; font-size:16px; font-weight:500; letter-spacing:0.64px;">小查理企業</p>
+                    <p style="color:#3B82F6; font-size:16px; font-weight:500; letter-spacing:0.64px;">智慧家居公司</p>
                 </template>
                 <el-menu-item index="2-1">會員基本資料</el-menu-item>
                 <el-menu-item index="2-2">登出</el-menu-item>
@@ -34,17 +35,18 @@
 
 <script setup>
 // import {ref, reactive} from 'vue';
-import { ref } from 'vue';
+// import { ref } from 'vue';
+
 import { Icon } from "@vicons/utils"; //https://xicons.org/
 import { NotificationsNoneFilled, HelpOutlineFilled } from '@vicons/material'
 
-let timer = ref(600);
-const timerCount = setInterval(() => {
-    timer.value--;
-    if (timer.value <= 0) {
-        clearInterval(timerCount);
-    }
-}, 1000)
+// let timer = ref(600);
+// const timerCount = setInterval(() => {
+//     timer.value--;
+//     if (timer.value <= 0) {
+//         clearInterval(timerCount);
+//     }
+// }, 1000)
 </script>
 
 <style scoped lang="scss">

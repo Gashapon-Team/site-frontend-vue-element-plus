@@ -1,7 +1,7 @@
 <template>
     <div class="main_footer">
-        <div>© 2018 Neweb Technologies Co., Ltd.</div>
-        <div>客服專線 02-2655-1775｜cs@newebpay.com｜服務時間24小時</div>
+        <div>© 2018 Nowob Technologies Co., Ltd.</div>
+        <div>客服專線 02-2345-4321｜cs@nowob.com｜服務時間24小時</div>
     </div>
 </template>
 
