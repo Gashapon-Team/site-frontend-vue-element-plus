@@ -1,7 +1,7 @@
 <template>
 
   <el-container>
-    <el-aside>
+    <el-aside v-if="showAside">
         <main-menu></main-menu>
     </el-aside>
 
@@ -24,8 +24,8 @@
 </template>
 
 <script setup>
-// import {ref,shallowRef} from 'vue';
-import { shallowRef } from 'vue';
+import {ref,shallowRef, computed} from 'vue';
+import { useRoute } from 'vue-router'
 
 import MainMenu from '../components/layout/main-menu.vue';
 import MainHeader from '../components/layout/main-header.vue';
@@ -39,6 +39,13 @@ let contentPage = shallowRef(KYC);
 // const changePage = (pageName) => {
 //   nowPage.value = markRaw(pageName)
 // }
+
+
+const route = useRoute()
+const showAside = computed(() => {
+  return route.meta.showAside
+})
+
 </script>
 
 
@@ -48,12 +55,14 @@ let contentPage = shallowRef(KYC);
 }
 
 .el-header {
+  width: calc(100% - $aside-width);
   height: $header-height;
   padding: 0px;
 }
 
 .el-main {
-  background: #F9FAFB;
+  // background-color: #F9F9F9;
+  background-color: $mainBgc;
   min-height: calc(100vh - $header-height - $footer-height);
   padding: 24px 40px;
 }

@@ -1,7 +1,7 @@
 <template>
     <el-card style="max-width:1524px; min-width:300px; margin:0 auto 24px;">
         <el-row :gutter="24" style="display: flex; justify-content: space-between;">
-            <el-col :md="20" :xs="24">
+            <el-col :lg="20" :xs="24">
                 <h4>實名認證 (KYC)</h4>
                 <p style="margin-top:10px; color:#606266;">
                     依據《第三方支付服務業防制洗錢及打擊資恐辦法》規定，藍新有義進行客戶身分調查......完成實名認證，請放心資料僅用於......
@@ -18,8 +18,8 @@
                 </div>
             </el-col>
             
-            <el-col :md="4" :xs="24" class="verifyBtn_css">
-                <el-button size="large" type="primary">
+            <el-col :lg="4" :xs="24" class="verifyBtn_css">
+                <el-button @click="router.push('/KycStep')" size="large" type="primary">
                     <Icon size="17" style="margin: 0px 10px 0px 0px;"><AdminPanelSettingsFilled /></Icon>
                     <span>前往認證</span>
                 </el-button>
@@ -37,7 +37,7 @@
         </template>
         
         <div style="text-align: center;">
-            <el-empty description="尚無認證紀錄" image-size="104"/>
+            <el-empty description="尚無認證紀錄" :image-size="104"/>
         </div>
 
         <!-- 改在<el-card>設定 :body-style
@@ -52,7 +52,9 @@
 
 import { Icon } from "@vicons/utils"; //https://xicons.org/
 import { AdminPanelSettingsFilled } from '@vicons/material'
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 
 </script>
 
@@ -61,11 +63,12 @@ import { AdminPanelSettingsFilled } from '@vicons/material'
 .verifyBtn_css {
     text-align: right;
 }
-@media (max-width: 980px) {
+@media (min-width: 768px) {
     .verifyBtn_css {
         text-align: center;
     }
 }
+
 
 </style>
    

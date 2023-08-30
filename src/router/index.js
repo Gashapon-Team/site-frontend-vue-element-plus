@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DemoView from '../views/DemoView.vue'
+import KycStep from '../views/KycStep.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,7 +16,17 @@ const router = createRouter({
     {
       path: '/demo',
       name: 'demo',
-      component: DemoView
+      component: DemoView,
+      meta: { showAside: true },
+    },
+    {
+      path: '/KycStep',
+      name: 'KycStep',
+      component: KycStep,
+      meta: { 
+        showAside: false,
+        showKycStep: true, 
+      },
     },
 
     {
